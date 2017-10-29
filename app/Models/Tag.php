@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Tag extends Model
 {
     use Notifiable;
     use SoftDeletes;
@@ -16,7 +16,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'tags';
     
     /**
      * The attributes that are mass assignable.
@@ -24,17 +24,6 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'menu_id',
-        'name',
-        'price',
-        'last_price',
-        'description',
-        'star',
-        'vote',
-        'digital',
-        'information',
-        'tag',
-        'publish_start',
-        'publish_end'
+        'tag'
     ];
 }

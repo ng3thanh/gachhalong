@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class News extends Model
 {
+    const TYPE_NEWS = 'news';
+    const TYPE_INTRODUCE = 'introduce';
+    const TYPE_DOCUMENT = 'document';
+    
     use Notifiable;
     use SoftDeletes;
     
@@ -16,7 +20,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'news';
     
     /**
      * The attributes that are mass assignable.
@@ -24,17 +28,13 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'menu_id',
-        'name',
-        'price',
-        'last_price',
+        'title',
         'description',
-        'star',
-        'vote',
-        'digital',
-        'information',
-        'tag',
+        'type',
+        'image',
+        'content',
         'publish_start',
-        'publish_end'
+        'publish_end',
+        'tag'
     ];
 }

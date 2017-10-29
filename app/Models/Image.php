@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Image extends Model
 {
+    const IS_MAIN_IMAGE = '0';
+    const IS_NOT_MAIN_IMAGE = '1';
+    
     use Notifiable;
     use SoftDeletes;
     
@@ -16,7 +19,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'images';
     
     /**
      * The attributes that are mass assignable.
@@ -24,17 +27,10 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'menu_id',
+        'product_id',
         'name',
-        'price',
-        'last_price',
-        'description',
-        'star',
-        'vote',
-        'digital',
-        'information',
-        'tag',
-        'publish_start',
-        'publish_end'
+        'alt',
+        'type',
+        'is_main_image'
     ];
 }
