@@ -18,7 +18,6 @@ class CreateImagesTable extends Migration
             $table->integer('product_id');
             $table->string('name');
             $table->text('alt');
-            $table->string('type');
             $table->boolean('is_main_image');
             $table->timestamps();
             $table->softDeletes();

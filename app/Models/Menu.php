@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Menu extends Model
 {
+    const MAIN_MENU = 0;
+    
     use Notifiable;
     use SoftDeletes;
     

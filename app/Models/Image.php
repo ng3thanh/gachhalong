@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    const IS_MAIN_IMAGE = '0';
-    const IS_NOT_MAIN_IMAGE = '1';
+    const IS_MAIN_IMAGE = '1';
+    const IS_NOT_MAIN_IMAGE = '0';
     
     use Notifiable;
     use SoftDeletes;

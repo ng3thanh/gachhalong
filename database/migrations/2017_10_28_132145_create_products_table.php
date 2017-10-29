@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('vote');
             $table->text('digital')->nullable();
             $table->text('information')->nullable();
-            $table->json('tag');
+            $table->json('tag')->nullable();
             $table->dateTime('publish_start');
             $table->dateTime('publish_end');
             $table->timestamps();
