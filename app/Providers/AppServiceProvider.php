@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $meta = Meta::orderBy('updated_at', 'DESC')->first();
-        View::share('meta', $meta->meta);
+        View::share('meta', isset($meta) ? $meta->meta : 'ngthanh2093@gmail.com');
     }
 
     /**
