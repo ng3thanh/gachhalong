@@ -33,4 +33,9 @@ class Image extends Model
         'type',
         'is_main_image'
     ];
+    
+    public function imageProduct()
+    {
+        return $this->belongsTo(Product::class, '');
+    }
 }

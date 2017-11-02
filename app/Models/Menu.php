@@ -30,4 +30,14 @@ class Menu extends Model
         'description',
         'parent_id'
     ];
+    
+    public function menuProduct()
+    {
+        return $this->hasMany(Product::class, 'menu_id');
+    }
+    
+    public function menuProductImage()
+    {
+        return $this->hasManyThrough(Product::class, Image::class);
+    }
 }

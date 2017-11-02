@@ -37,4 +37,14 @@ class Product extends Model
         'publish_start',
         'publish_end'
     ];
+    
+    public function productMenu()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id');
+    }
+    
+    public function productImage()
+    {
+        return $this->hasMany(Image::class, 'product_id');
+    }
 }
