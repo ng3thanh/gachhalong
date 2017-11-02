@@ -22,7 +22,7 @@
 			<div id="horizontalTab"
 				style="display: block; width: 100%; margin: 0px;">
 				<ul class="resp-tabs-list">
-					@foreach($menu as $key => $value)
+					@foreach($parentMenu as $key => $value)
 					<li class="resp-tab-item" aria-controls="tab_item-{{ $key }}" role="tab">
 						<span>{{ $value }}</span>
 					</li>

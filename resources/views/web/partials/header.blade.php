@@ -31,16 +31,14 @@
 		<div class="col-md-6 header-middle">
 			<form>
 				<div class="search">
-					<input type="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="required">
+					<input type="search" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="required">
 				</div>
 				<div class="section_room">
 					<select id="country" onchange="change_country(this.value)" class="frm-field required">
-						<option value="null">All categories</option>
-						<option value="null">Electronics</option>
-						<option value="AX">kids Wear</option>
-						<option value="AX">Men's Wear</option>
-						<option value="AX">Women's Wear</option>
-						<option value="AX">Watches</option>
+						<option value="null">Tất cả</option>
+						@foreach($menus as $menu)
+							<option value="{{ $menu->id }}">{{ $menu->name }}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="sear-sub">

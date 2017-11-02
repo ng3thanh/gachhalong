@@ -22,43 +22,10 @@
 			<div id="horizontalTab"
 				style="display: block; width: 100%; margin: 0px;">
 				<ul class="resp-tabs-list">
-					@foreach($menu as $key => $value)
-					<li class="resp-tab-item" aria-controls="tab_item-{{ $key }}" role="tab">
-						<span>{{ $value }}</span>
-					</li>
-					@endforeach
+					
 				</ul>
 				<div class="resp-tabs-container">
-					@foreach($data as $key => $products)
-					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-{{ $key }}">
-						@foreach($products as $product)
-						<div class="col-md-3 product-men yes-marg">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/{{ $product->image_name }}" alt="{{ $product->alt }}" class="pro-image-front"> 
-									<img src="images/{{ $product->image_name }}" alt="{{ $product->alt }}" class="pro-image-back">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="{{ URL::route('product', $product->id) }}" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.html">{{ $product->name }}</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">Liên hệ</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						@endforeach
-						<div class="clearfix"></div>
-					</div>
-					@endforeach			
+						
 				</div>
 			</div>
 		</div>

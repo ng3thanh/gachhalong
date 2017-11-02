@@ -17,7 +17,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $menu = Menu::whereColumn('parent_id', 'id')->get()->pluck('name', 'id');
+        $parentMenu = Menu::whereColumn('parent_id', 'id')->get()->pluck('name', 'id');
 
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
             ->join('images', 'images.product_id', '=', 'products.id')
@@ -35,7 +35,7 @@ class MainController extends Controller
             return [$item['menu_parent_id'] => $item];
         });
 
-        return view('web.main', ['menu' => $menu, 'data' => $data]);
+        return view('web.main', ['parentMenu' => $parentMenu, 'data' => $data]);
     }
 
     /**
