@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 /*
  * |--------------------------------------------------------------------------
  * | Web Routes
@@ -12,6 +13,8 @@
  */
 Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(function () {
     Route::get('/', 'MainController@index')->name('main');
+    
+    Route::get('san_pham/{id}', 'ProductController@show')->name('product')->where('id', '[0-9]+');
 });
     
 Route::middleware('admin')->domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {

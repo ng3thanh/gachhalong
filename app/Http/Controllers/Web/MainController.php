@@ -17,7 +17,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $menu = Menu::where('parent_id', Menu::MAIN_MENU)->get()->pluck('name', 'id');
+        $menu = Menu::whereColumn('parent_id', 'id')->get()->pluck('name', 'id');
 
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
             ->join('images', 'images.product_id', '=', 'products.id')
@@ -30,7 +30,7 @@ class MainController extends Controller
                 'images.alt')
             ->where('is_main_image', Image::IS_MAIN_IMAGE)
             ->get();
-        
+
         $data = $products->mapToGroups(function ($item, $key) {
             return [$item['menu_parent_id'] => $item];
         });
