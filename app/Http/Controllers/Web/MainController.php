@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class MainController extends Controller
 {
@@ -19,6 +20,9 @@ class MainController extends Controller
     {
         $parentMenu = Menu::whereColumn('parent_id', 'id')->get()->pluck('name', 'id');
 
+        $smallBanner = Banner::where('name', Banner::BANNER_SMALL)->orderBy('serial')->get();
+        $bigBanner = Banner::where('name', Banner::BANNER_BIG)->orderBy('serial')->get();
+        
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
             ->join('images', 'images.product_id', '=', 'products.id')
             ->select(
@@ -35,7 +39,10 @@ class MainController extends Controller
             return [$item['menu_parent_id'] => $item];
         });
 
-        return view('web.main', ['parentMenu' => $parentMenu, 'data' => $data]);
+        return view('web.main', ['parentMenu' => $parentMenu, 
+                                 'smallBanner' => $smallBanner,
+                                 'bigBanner' => $bigBanner,
+                                 'data' => $data]);
     }
 
     /**

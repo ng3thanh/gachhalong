@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 
 class Banner extends Model
 {
+    const BANNER_BIG = 'big';
+    const BANNER_SMALL = 'small';
+    
     use Notifiable;
     use SoftDeletes;
     

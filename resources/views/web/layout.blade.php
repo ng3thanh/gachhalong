@@ -14,8 +14,8 @@
     <body>
     	@include('web.partials.header')
     	@include('web.partials.menu')
-		@include('web.partials.banner')
 		@yield('content')
+		@include('web.partials.guide')
 		@include('web.partials.footer')
     </body>
 </html>
