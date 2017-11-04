@@ -21,10 +21,10 @@
 					@endforeach
 				</ul>
 				<div class="slide-controller">
-					<a href="#" class="btn-prev"><img src="images/btn_prev.png" alt="Prev Slide" /></a> 
-					<a href="#" class="btn-play"><img src="images/btn_play.png" alt="Start Slide" /></a> 
-					<a href="#" class="btn-pause"><img src="images/btn_pause.png" alt="Pause Slide" /></a> 
-					<a href="#" class="btn-next"><img src="images/btn_next.png" alt="Next Slide" /></a>
+					<a href="#" class="btn-prev"><img src="{{ asset('images/btn_prev.png') }}" alt="Prev Slide" /></a> 
+					<a href="#" class="btn-play"><img src="{{ asset('images/btn_play.png') }}" alt="Start Slide" /></a> 
+					<a href="#" class="btn-pause"><img src="{{ asset('images/btn_pause.png') }}" alt="Pause Slide" /></a> 
+					<a href="#" class="btn-next"><img src="{{ asset('images/btn_next.png') }}" alt="Next Slide" /></a>
 				</div>
 			</div>
 			<div class="clearfix"></div>
