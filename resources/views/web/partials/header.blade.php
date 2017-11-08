@@ -4,11 +4,11 @@
 		<ul>
 			<li>
 				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-				Free and Fast Delivery
+				Giao hàng nhanh chóng
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-				Free shipping On all orders
+				Miễn phí giao hàng
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>

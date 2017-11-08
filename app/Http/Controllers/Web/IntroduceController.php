@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Image;
 
-class ProductController extends Controller
+class IntroduceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,24 +46,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::join('menus', 'menus.id', '=', 'products.menu_id')
-        ->select(
-            'products.id',
-            'products.name',
-            'products.price',
-            'products.description',
-            'products.star',
-            'products.digital',
-            'products.information',
-            'menus.name AS menu_name'
-        )
-        ->where('publish_start', '<=',date('Y-m-d H:i:s'))
-        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
-        ->findOrFail($id);
-        
-        $images = Image::where('product_id', $id)->get();
-
-        return view('web.pages.detail', ['product' => $product, 'images' => $images]);
+        //
     }
 
     /**

@@ -31,7 +31,7 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	<script type="text/javascript" src="js/pignose.layerslider.js"></script>
+	<script type="text/javascript" src="{{ asset('js/pignose.layerslider.js') }}"></script>
 	<script type="text/javascript">
     	//<![CDATA[
     		$(window).load(function() {

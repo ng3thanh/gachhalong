@@ -96,10 +96,10 @@
 								</ul>
 							</li>
 							<li class="menu__item">
-								<a class="menu__link" href="electronics.html">Tài liệu</a>
+								<a class="menu__link" href="{{ URL::route('document') }}">Tài liệu</a>
 							</li>
 							<li class="menu__item">
-								<a class="menu__link" href="contact.html">Liên hệ</a>
+								<a class="menu__link" href="{{ URL::route('contact') }}">Liên hệ</a>
 							</li>
 						</ul>
 					</div>

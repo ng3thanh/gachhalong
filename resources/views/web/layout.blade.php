@@ -10,6 +10,7 @@
 		@include('web.assets.css')
 		@include('web.assets.js')
 		@yield('css')
+		@yield('js')
 	</head>
     <body>
     	@include('web.partials.header')

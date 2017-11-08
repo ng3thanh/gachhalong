@@ -33,6 +33,8 @@ class MainController extends Controller
                 'images.name as image_name',
                 'images.alt')
             ->where('is_main_image', Image::IS_MAIN_IMAGE)
+            ->where('publish_start', '<=',date('Y-m-d H:i:s'))
+            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->get();
 
         $data = $products->mapToGroups(function ($item, $key) {
