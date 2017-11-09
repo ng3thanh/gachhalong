@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\Menu;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $menuData = Menu::all();
+        
+        $menuProduct = $menuData->mapToGroups(function ($item, $key) {
+            return [$item['parent_id'] => $item];
+        });
+
+        return view('web.pages.product.list', ['menuProduct' => $menuProduct]);
     }
 
     /**
