@@ -1,5 +1,5 @@
 @extends('web.layout') 
-@section('title', 'Gạch Hạ Long')
+@section('title', $product->name)
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}" type="text/css" media="screen" />
 @endsection

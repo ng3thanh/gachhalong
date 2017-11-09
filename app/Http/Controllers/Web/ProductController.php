@@ -65,7 +65,7 @@ class ProductController extends Controller
         
         $images = Image::where('product_id', $id)->get();
 
-        return view('web.pages.detail', ['product' => $product, 'images' => $images]);
+        return view('web.pages.product.detail', ['product' => $product, 'images' => $images]);
     }
 
     /**
