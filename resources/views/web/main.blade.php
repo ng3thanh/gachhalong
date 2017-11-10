@@ -35,8 +35,8 @@
 						<div class="col-md-3 product-men yes-marg">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/{{ $product->image_name }}" alt="{{ $product->alt }}" class="pro-image-front"> 
-									<img src="images/{{ $product->image_name }}" alt="{{ $product->alt }}" class="pro-image-back">
+									<img src="{{ asset('images/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-front"> 
+									<img src="{{ asset('images/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="{{ URL::route('product_detail', $product->id) }}" class="link-product-add-cart">Quick View</a>
@@ -47,7 +47,7 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">{{ $product->name }}</a>
+										<a href="{{ URL::route('product_detail', $product->id) }}">{{ $product->name }}</a>
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price">Liên hệ</span>
