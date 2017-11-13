@@ -21,13 +21,15 @@
 					@foreach($parentMenu as $key => $groupMenu)
 					<li>
     					<input type="checkbox" checked="checked" id="item-{{ $key }}" />
-    					<label for="item-{{ $key }}"><span></span>{{ $groupMenu }}</label>
+    					<label for="item-{{ $key }}"><span></span><a href="{{ URL::route('product', $key) }}">{{ $groupMenu }}</a></label>
 						<ul>
 							@foreach($menuProduct[$key] as $k => $menu)
-							<li>
-								<input type="checkbox" id="item-{{ $key }}-{{ $k }}" />
-								<label for="item-{{ $key }}-{{ $k }}">Ethinic Wear</label>
-							</li>
+    							@if($menu->id != $menu->parent_id)
+    							<li>
+    								<input type="checkbox" id="item-{{ $key }}-{{ $k }}" />
+    								<label for="item-{{ $key }}-{{ $k }}">{{ $menu->name }}</label>
+    							</li>
+    							@endif
 							@endforeach
 						</ul>
 					</li>
@@ -37,14 +39,13 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="col-md-8 products-right">
-			<h5>Product Compare(0)</h5>
 			<div class="sort-grid">
 				<div class="sorting">
 					<h6>Sắp xếp</h6>
 					<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-						<option value="null">Default</option>
-						<option value="null">Name(A - Z)</option>
-						<option value="null">Name(Z - A)</option>
+						<option value="null">Mặc định</option>
+						<option value="null">Tên (A - Z)</option>
+						<option value="null">Tên (Z - A)</option>
 					</select>
 					<div class="clearfix"></div>
 				</div>
@@ -63,7 +64,7 @@
 			
 			<div class="men-wear-bottom">
 				<div class="col-sm-4 men-wear-left">
-					<img class="img-responsive" src="{{ asset('images/men3.jpg') }}" alt=" " />
+					<img class="img-responsive" src="{{ asset('images/'. $menuNow->image) }}" alt=" " />
 				</div>
 				<div class="col-sm-8 men-wear-right">
 					<h4>{{ $menuNow->name }}</h4>
