@@ -17,7 +17,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $meta = Meta::orderBy('updated_at', 'DESC')->first();
-        $menus = Menu::get();
+        $menus = Menu::all()->mapToGroups(function ($item, $key) {
+            return [
+                $item['parent_id'] => $item
+            ];
+        });
+        
         View::share('meta', isset($meta) ? $meta->meta : 'ngthanh2093@gmail.com');
         View::share('menus', $menus);
     }

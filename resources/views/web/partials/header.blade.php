@@ -24,7 +24,7 @@
 		<div class="col-md-3 header-left">
 			<h1>
 				<a href="{{ URL::route('main') }}">
-					<img src="images/logo3.jpg">
+					<img src="{{ asset('images/logo3.jpg') }}">
 				</a>
 			</h1>
 		</div>
@@ -37,7 +37,9 @@
 					<select id="country" onchange="change_country(this.value)" class="frm-field required">
 						<option value="null">Tất cả</option>
 						@foreach($menus as $menu)
-							<option value="{{ $menu->id }}">{{ $menu->name }}</option>
+							@foreach($menu as $k => $m)
+								<option value="{{ $m->id }}">{{ $m->name }}</option>
+							@endforeach
 						@endforeach
 					</select>
 				</div>

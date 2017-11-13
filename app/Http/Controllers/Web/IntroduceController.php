@@ -14,7 +14,7 @@ class IntroduceController extends Controller
      */
     public function index()
     {
-        //
+        return view('web.pages.introduce.list');
     }
 
     /**

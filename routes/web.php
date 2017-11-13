@@ -19,7 +19,7 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     });
     
     Route::prefix('san_pham')->group(function () {
-        Route::get('/danh_sach', 'ProductController@index')->name('product');
+        Route::get('/danh_sach/{menu_id}', 'ProductController@index')->name('product');
         Route::get('chi_tiet_san_pham/{id}', 'ProductController@show')->name('product_detail')->where('id', '[0-9]+');
     });
 

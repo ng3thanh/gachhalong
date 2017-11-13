@@ -15,9 +15,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($menu_id)
     {
-        $menuId = Request::get('menu_id', 1);
+        $menuId = $menu_id;
         $paginate = Request::get('paginate', 10);
         
         $menuNow = Menu::where('id', $menuId)->first();

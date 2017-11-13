@@ -35,7 +35,7 @@
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-tags" aria-hidden="true"></i>&nbsp;&nbsp;
-							<a href="{{ URL::route('product') }}">Sản phẩm</a>
+							<a href="{{ URL::route('product', 1) }}">Sản phẩm</a>
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>&nbsp;&nbsp;
@@ -70,24 +70,51 @@
 				<div class="col-md-4 sign-gd flickr-post">
 					<h4>Sản phẩm bán chạy</h4>
 					<ul>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b16.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b17.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b18.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b16.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b17.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b18.jpg" alt=" "
-								class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" "
-								class="img-responsive" /></a></li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b16.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b17.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b18.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b18.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b16.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
+						<li>
+							<a href="single.html">
+								<img src="{{ asset('images/b17.jpg') }}" alt=" " class="img-responsive" />
+							</a>
+						</li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -95,8 +122,7 @@
 		</div>
 		<div class="clearfix"></div>
 		<p class="copy-right">
-			&copy 2016 Smart Shop. All rights reserved | Design by <a
-				href="http://w3layouts.com/">W3layouts</a>
+			&copy 2017 Smart Shop. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a>
 		</p>
 	</div>
 </div>
