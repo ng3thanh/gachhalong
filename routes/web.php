@@ -20,7 +20,7 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     
     Route::prefix('san_pham')->group(function () {
         Route::get('/danh_sach/{menu_id}', 'ProductController@index')->name('product');
-        Route::get('chi_tiet_san_pham/{id}', 'ProductController@show')->name('product_detail')->where('id', '[0-9]+');
+        Route::get('chi_tiet_san_pham/{id}', 'ProductController@show')->name('product_detail');
     });
 
     Route::prefix('tai_lieu')->group(function () {
@@ -32,7 +32,13 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     });
 });
     
-Route::middleware('admin')->domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {
+Route::middleware('guest')->domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {
+    Route::get('/', 'DashBoardController@index')->name('main');
+    
+    Route::resource('introduce', 'IntroduceController');
+    Route::resource('product', 'ProductController');
+    Route::resource('document', 'DocumentController');
+    Route::resource('contact', 'ContactController');
     
 });
 

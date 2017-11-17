@@ -1,5 +1,4 @@
-@extends('admin.layout') 
-@section('title', 'Dashboard')
+@extends('admin.layout') @section('title', 'Dashboard')
 
 @section('content')
 
@@ -11,12 +10,8 @@
 			<!-- small box -->
 			<div class="small-box bg-aqua">
 				<div class="inner">
-					<h3>{{ $totalCoins }}</h3>
-					@if(true)
+					<h3></h3>
 					<p>Coins Up</p>
-					@else
-					<p>Coins Down</p>
-					@endif
 				</div>
 				<div class="icon">
 					<i class="ion @if(true) ion-happy-outline @else ion-sad-outline @endif"></i>
@@ -84,18 +79,9 @@
 
 				<!-- Tabs within a box -->
 				<ul class="nav nav-tabs pull-right">
-					@foreach($lowestCoins as $key => $coin)
-					<li class="@if(array_search(head($lowestCoins), $lowestCoins) == $key) active @endif">
-						<a href="#lowest-chart-{{ $key }}" data-toggle="tab">{{ $key }}</a>
-					</li>
-					@endforeach
 					<li class="pull-left header"><i class="fa fa-bitcoin"></i> Lowest Coin</li>
 				</ul>
 				<div class="tab-content no-padding">
-					<!-- Morris chart - Sales -->
-					@foreach($lowestCoins as $key => $coin)
-					<div class="chart tab-pane @if(array_search(head($lowestCoins), $lowestCoins) == $key) active @endif" id="lowest-chart-{{ $key }}" style="position: relative; height: 300px;"></div>
-					@endforeach
 				</div>
 			</div>
 			<!-- /.nav-tabs-custom -->
@@ -105,18 +91,9 @@
 
 				<!-- Tabs within a box -->
 				<ul class="nav nav-tabs pull-right">
-					@foreach($highestCoins as $key => $coin)
-					<li class="@if(array_search(head($highestCoins), $highestCoins) == $key) active @endif">
-						<a href="#highest-chart-{{ $key }}" data-toggle="tab">{{ $key }}</a>
-					</li>
-					@endforeach
 					<li class="pull-left header"><i class="fa fa-bitcoin"></i> Highest Coin</li>
 				</ul>
 				<div class="tab-content no-padding">
-					<!-- Morris chart - Sales -->
-					@foreach($highestCoins as $key => $coin)
-					<div class="chart tab-pane @if(array_search(head($highestCoins), $highestCoins) == $key) active @endif" id="highest-chart-{{ $key }}" style="position: relative; height: 300px;"></div>
-					@endforeach
 				</div>
 			</div>
 			<!-- /.nav-tabs-custom -->
@@ -143,7 +120,7 @@
 				<div class="box-body chat" id="chat-box">
 					<!-- chat item -->
 					<div class="item">
-						<img src="dist/img/user4-128x128.jpg" alt="user image"
+						<img src="{{ asset('admin/dist/img/user4-128x128.jpg') }}" alt="user image"
 							class="online">
 
 						<p class="message">
@@ -167,7 +144,7 @@
 					<!-- /.item -->
 					<!-- chat item -->
 					<div class="item">
-						<img src="dist/img/user3-128x128.jpg" alt="user image"
+						<img src="{{ asset('admin/dist/img/user3-128x128.jpg') }}" alt="user image"
 							class="offline">
 
 						<p class="message">
@@ -181,7 +158,7 @@
 					<!-- /.item -->
 					<!-- chat item -->
 					<div class="item">
-						<img src="dist/img/user2-160x160.jpg" alt="user image"
+						<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" alt="user image"
 							class="offline">
 
 						<p class="message">
@@ -529,62 +506,8 @@
 </section>
 <!-- /.content -->
 
-@endsection @section('script')
-<script type="text/javascript">
-    @foreach($lowestCoins as $key => $coin)
-    	var lowCoin{{ $key }} = new Morris.Area({
-          element   : 'lowest-chart-{{ $key }}',
-          resize    : true,
-          data      : [
-    		@foreach($coin as $k => $v)
-          	{ time: '{{ $v['created_at'] }}', lowest: '{{ $v['lowest_price'] }}', highest: '{{ $v['highest_price'] }}' },
-    		@endforeach
-          ],
-          xkey      : 'time',
-          ykeys     : ['lowest', 'highest'],
-          labels    : ['Lowest', 'Highest'],
-          lineColors: ['#a0d0e0', '#3c8dbc'],
-          hideHover : 'auto'
-        });
-    @endforeach
+@endsection 
 
-    @foreach($highestCoins as $key => $coin)
-    	var highCoin{{ $key }} = new Morris.Area({
-          element   : 'highest-chart-{{ $key }}',
-          resize    : true,
-          data      : [
-    		@foreach($coin as $k => $v)
-          	{ time: '{{ $v['created_at'] }}', lowest: '{{ $v['lowest_price'] }}', highest: '{{ $v['highest_price'] }}' },
-    		@endforeach
-          ],
-          xkey      : 'time',
-          ykeys     : ['lowest', 'highest'],
-          labels    : ['Lowest', 'Highest'],
-          lineColors: ['#a0d0e0', '#3c8dbc'],
-          hideHover : 'auto'
-        });
-	@endforeach
-	
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		var target = $(e.target).attr("href") // activated tab
-
-		switch (target) {
-			@foreach($lowestCoins as $key => $coin)
-            case "#lowest-chart-{{ $key }}":
-        		lowCoin{{ $key }}.redraw();
-              	$(window).trigger('resize');
-              	break;
-          	@endforeach
-          	@foreach($highestCoins as $key => $coin)
-            case "#highest-chart-{{ $key }}":
-        		highCoin{{ $key }}.redraw();
-              	$(window).trigger('resize');
-              	break;
-          	@endforeach
-      	}
-    });
-
-</script>
-
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+@section('script')
+<script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
 @endsection

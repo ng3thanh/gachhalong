@@ -35,7 +35,7 @@
 								<li>
 									<!-- start message --> <a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											Support Team <small><i class="fa fa-clock-o"></i> 5 mins</small>
@@ -46,7 +46,7 @@
 								<!-- end message -->
 								<li><a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('admin/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											AdminLTE Design Team <small><i class="fa fa-clock-o"></i> 2
@@ -56,7 +56,7 @@
 								</a></li>
 								<li><a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('admin/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											Developers <small><i class="fa fa-clock-o"></i> Today</small>
@@ -65,7 +65,7 @@
 								</a></li>
 								<li><a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('admin/dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											Sales Department <small><i class="fa fa-clock-o"></i>
@@ -75,7 +75,7 @@
 								</a></li>
 								<li><a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('admin/dist/img/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											Reviewers <small><i class="fa fa-clock-o"></i> 2 days</small>
@@ -194,13 +194,13 @@
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-						<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image"
+						<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="user-image"
 						alt="User Image"> <span class="hidden-xs">Alexander Pierce</span>
 				</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
 						<li class="user-header">
-							<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+							<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
 							<p>
 								Alexander Pierce - Web Developer <small>Member since Nov. 2012</small>
