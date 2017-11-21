@@ -31,14 +31,20 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
         Route::get('/danh_sach', 'ContactController@index')->name('contact');
     });
 });
+
+Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {
     
-Route::middleware('guest')->domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {
-    Route::get('/', 'DashBoardController@index')->name('main');
+    Route::middleware('admin')->group(function () {
+        Route::get('/', 'DashBoardController@index')->name('main');
+        
+        Route::resource('introduce', 'IntroduceController');
+        Route::resource('product', 'ProductController');
+        Route::resource('document', 'DocumentController');
+        Route::resource('contact', 'ContactController');
+    });
     
-    Route::resource('introduce', 'IntroduceController');
-    Route::resource('product', 'ProductController');
-    Route::resource('document', 'DocumentController');
-    Route::resource('contact', 'ContactController');
+    Route::get('/login', 'LoginController@getLogin')->name('login');
+    Route::post('/login', 'LoginController@postLogin')->name('login');
     
 });
 
