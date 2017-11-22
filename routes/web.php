@@ -43,8 +43,8 @@ Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function 
         Route::resource('contact', 'ContactController');
     });
     
-    Route::get('/login', 'LoginController@getLogin')->name('login');
-    Route::post('/login', 'LoginController@postLogin')->name('login');
+    Route::get('/login', 'LoginController@getLogin')->name('get_login');
+    Route::post('/login', 'LoginController@postLogin')->name('post_login');
     
 });
 

@@ -159,6 +159,11 @@ input:valid + .label {
   background: #A678E2;
 }
 
+.login_btn {
+	width: 50%;
+	margin: 0 auto;
+	display: table;
+}
 
 /* Intro animation */
 @keyframes intro {

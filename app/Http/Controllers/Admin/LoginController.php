@@ -3,7 +3,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -43,5 +45,15 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request)
-    {}
+    {
+        if (Auth::attempt([
+            'username' => $request->username,
+            'password' => $request->password
+        ])) {
+            
+            return redirect()->intended('main');
+        } else {
+            return redirect()->route('get_login');
+        }
+    }
 }
