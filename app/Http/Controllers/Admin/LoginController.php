@@ -2,14 +2,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Cartalyst\Sentinel\Sentinel;
+use App\Http\Requests\LoginRequest;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
-use Cartalyst\Support\Validator;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
@@ -49,12 +47,19 @@ class LoginController extends Controller
         return view('admin.pages.login');
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(LoginRequest $request)
     {
         try {
             $remember = (bool) $request->get('remember', false);
-            
-            if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+//             dd($request->password);
+            dd(Sentinel::authenticate([
+                'username' => $request->username,
+                'password' => $request->password
+            ]));
+            if (Sentinel::authenticate([
+                'username' => $request->username,
+                'password' => $request->password
+            ])) {
                 return Redirect::route('main');
             } else {
                 $errors = 'Tên đăng nhập hoặc mật khẩu không đúng.';

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 
 class Admin
 {
@@ -15,8 +16,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        
-        if (true) {
+        if (Sentinel::guest() || !(Sentinel::inRole('admin') || Sentinel::inRole('mod'))) {
             return redirect()->route('get_login');
         }
         

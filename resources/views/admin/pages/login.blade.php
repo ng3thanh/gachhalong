@@ -11,7 +11,6 @@
 	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
 
 	<div class="container">
-		@include('admin.partials.notification')
 		<div class="profile">
 			<button class="profile__avatar" id="toggleProfile">
 				<img src="https://pbs.twimg.com/profile_images/554631714970955776/uzPxPPtr.jpeg" alt="Avatar" />
@@ -35,6 +34,7 @@
     			</div>
 			</form>
 		</div>
+		@include('admin.partials.notification')
 	</div>
 
 	<script src="{{ asset('admin/js/js-login.js') }}"></script>
