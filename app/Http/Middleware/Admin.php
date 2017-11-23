@@ -17,7 +17,7 @@ class Admin
     {
         
         if (true) {
-            return redirect('get_login');
+            return redirect()->route('get_login');
         }
         
         return $next($request);

@@ -17,7 +17,7 @@
     		@include('admin.partials.sidebar')
     
     		<div class="content-wrapper">
-    		
+    			@include('admin.partials.notification')
     			@include('admin.partials.breadcrumb')
     			@yield('content')
     			
