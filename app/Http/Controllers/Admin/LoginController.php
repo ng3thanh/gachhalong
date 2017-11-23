@@ -51,13 +51,9 @@ class LoginController extends Controller
     {
         try {
             $remember = (bool) $request->get('remember', false);
-//             dd($request->password);
-            dd(Sentinel::authenticate([
-                'username' => $request->username,
-                'password' => $request->password
-            ]));
+
             if (Sentinel::authenticate([
-                'username' => $request->username,
+                'email' => $request->email,
                 'password' => $request->password
             ])) {
                 return Redirect::route('main');

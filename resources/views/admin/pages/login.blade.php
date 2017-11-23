@@ -20,8 +20,8 @@
     			<div class="profile__form">
     				<div class="profile__fields">
     					<div class="field">
-    						<input type="text" id="fieldUser" class="input" name="username" value="{{ old('username') }}" required pattern=.*\S.* /> 
-    						<label for="fieldUser" class="label">Username</label>
+    						<input type="text" id="fieldUser" class="input" name="email" value="{{ old('email') }}" required pattern=.*\S.* /> 
+    						<label for="fieldUser" class="label">Email</label>
     					</div>
     					<div class="field">
     						<input type="password" id="fieldPassword" class="input" name="password" value="{{ old('password') }}" required pattern=.*\S.* /> 

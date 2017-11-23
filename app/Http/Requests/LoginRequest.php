@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|between:3,20',
+            'email' => 'required|between:3,20|email',
             'password' => 'required|between:3,20'
         ];
     }
@@ -32,10 +32,11 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'Tài khoản không được để trống!',
+            'email.required' => 'Email không được để trống!',
             'password.required' => 'Mật khẩu không được để trống!',
-            'username.between' => 'Tên tài khoản phải lớn hơn :min ký tự và nhỏ hơn :max ký tự.',
-            'password.between' => 'Mật khẩu phải lớn hơn :min ký tự và nhỏ hơn :max ký tự.'
+            'email.between' => 'Email phải lớn hơn :min ký tự và nhỏ hơn :max ký tự.',
+            'password.between' => 'Mật khẩu phải lớn hơn :min ký tự và nhỏ hơn :max ký tự.',
+            'email.email' => 'Email không đúng định dạng'
         ];
     }
 }

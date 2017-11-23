@@ -32,12 +32,12 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
 		
-			<li class="header">MAIN NAVIGATION</li>
+			<li class="header">DANH MỤC</li>
 			
 			<li class="active treeview">
     			<a href="{{ URL::route('main') }}"> 
     				<i class="fa fa-dashboard"></i>
-    				<span> Dashboard</span>
+    				<span> Trang quản lý</span>
     			</a>
 			</li>
 			
@@ -51,21 +51,28 @@
 				</a>
 				<ul class="treeview-menu">
 					<li>
-						<a href="pages/layout/top-nav.html">
-							<i class="fa fa-circle-o"></i> Top Navigation
+						<a href="{{ URL::route('introduce.index') }}">
+							<i class="fa fa-circle-o"></i> Danh mục giới thiệu
 						</a>
 					</li>
 				</ul>
 			</li>
 			
-			<li>
-				<a href="pages/widgets.html"> 
+			<li class="treeview">
+				<a href="#"> 
 					<i class="fa fa-calendar"></i> 
 					<span> Sản phẩm</span>
 					<span class="pull-right-container"> 
 						<small class="label pull-right bg-green">new</small>
 					</span>
 				</a>
+				<ul class="treeview-menu">
+					<li>
+						<a href="{{ URL::route('product.index') }}">
+							<i class="fa fa-circle-o"></i> Danh mục sản phẩm
+						</a>
+					</li>
+				</ul>
 			</li>
 			
 			<li class="treeview">

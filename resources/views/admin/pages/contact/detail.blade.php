@@ -1,9 +1,8 @@
-@extends('web.layout') 
-@section('title', 'Gạch Hạ Long')
-@section('css')
+@extends('admin.layout') 
 
-@endsection
-@section('js')
+@section('title', 'Giới thiệu')
+
+@section('css')
 
 @endsection
 
@@ -11,3 +10,7 @@
 
 
 @endsection 
+
+@section('script')
+
+@endsection
