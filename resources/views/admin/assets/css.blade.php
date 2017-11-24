@@ -30,3 +30,6 @@
 
 <!-- Google Font -->
 <link rel="stylesheet" href="{{ asset('admin/css/font-google.css') }}">
+
+<!-- Local css -->
+<link rel="stylesheet" href="{{ asset('admin/css/local.css') }}">

@@ -1,13 +1,14 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestParameter;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +16,37 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::withTrashed()->get();
-        return view('admin.pages.product.index', ['products' => $products]);
+        $name = RequestParameter::get('name', null);
+        $publishTime = RequestParameter::get('publish_time', null);
+        $startPrice = RequestParameter::get('start_price', null);
+        $endPrice = RequestParameter::get('end_price', null);
+        
+        $query = Product::withTrashed();
+        
+        if (! empty($name)) {
+            $query->where('name', $name);
+        }
+        
+        if (!empty($publishTime)) {
+            $startTime = date('Y-m-d 00:00:00', strtotime(substr($publishTime, 0, 10)));
+            $endTime = date('Y-m-d 23:59:59', strtotime(substr($publishTime, - 10)));
+            
+            $query->where('publish_start', '>=', $startTime)
+                  ->where('publish_end', '<=', $endTime);
+        } 
+
+        if (! empty($startPrice)) {
+            $query->where('price', '>=', $startPrice);
+        }
+        
+        if (! empty($endPrice)) {
+            $query->where('price', '<=', $endPrice);
+        }
+        
+        $products = $query->paginate(10);
+        return view('admin.pages.product.index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -32,7 +62,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +73,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +84,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +95,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,7 +107,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
