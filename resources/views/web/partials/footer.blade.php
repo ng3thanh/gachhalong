@@ -35,7 +35,7 @@
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-tags" aria-hidden="true"></i>&nbsp;&nbsp;
-							<a href="{{ URL::route('product', 1) }}">Sản phẩm</a>
+							<a href="{{ URL::route('introduce') }}">Sản phẩm</a>
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>&nbsp;&nbsp;

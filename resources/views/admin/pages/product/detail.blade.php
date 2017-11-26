@@ -1,6 +1,6 @@
 @extends('admin.layout') 
 
-@section('title', 'Giới thiệu')
+@section('title', 'Chi tiết sản phẩm')
 
 @section('css')
 

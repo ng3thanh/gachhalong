@@ -28,6 +28,7 @@ class MainController extends Controller
             ->select(
                 'products.id', 
                 'products.name', 
+                'products.slug',
                 'menus.id as menu_id', 
                 'menus.parent_id as menu_parent_id',
                 'images.name as image_name',

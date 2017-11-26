@@ -63,13 +63,18 @@
 					<i class="fa fa-calendar"></i> 
 					<span> Sản phẩm</span>
 					<span class="pull-right-container"> 
-						<small class="label pull-right bg-green">new</small>
+						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
 					<li>
 						<a href="{{ URL::route('product.index') }}">
-							<i class="fa fa-circle-o"></i> Danh mục sản phẩm
+							<i class="fa fa-list"></i> Danh mục sản phẩm
+						</a>
+					</li>
+					<li>
+						<a href="{{ URL::route('product.create') }}">
+							<i class="fa fa-plus-circle"></i> Thêm mới sản phẩm
 						</a>
 					</li>
 				</ul>

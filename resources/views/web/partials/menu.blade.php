@@ -44,11 +44,11 @@
 										@foreach($menu as $k => $m)
 											@if($m->id == $m->parent_id)
 												<li>
-													<a href="{{ URL::route('product', $m->id) }}"><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>&nbsp;&nbsp;{{ $m->name }}</a>
+													<a href="{{ URL::route('product', [$m->slug, $m->id]) }}"><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>&nbsp;&nbsp;{{ $m->name }}</a>
 												</li>
 											@else
 												<li>
-													<a href="{{ URL::route('product', $m->id) }}"><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>&nbsp;&nbsp;{{ $m->name }}</a>
+													<a href="{{ URL::route('product', [$m->slug, $m->id]) }}"><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>&nbsp;&nbsp;{{ $m->name }}</a>
 												</li>
 											@endif
 										@endforeach

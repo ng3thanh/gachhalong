@@ -26,7 +26,8 @@ class ProductController extends Controller
         ->join('images', 'images.product_id', '=', 'products.id')
         ->select(
             'products.id', 
-            'products.name', 
+            'products.name',
+            'products.slug',
             'menus.id as menu_id', 
             'menus.parent_id as menu_parent_id', 
             'images.name as image_name', 
@@ -94,7 +95,7 @@ class ProductController extends Controller
             ->findOrFail($id);
         
         $images = Image::where('product_id', $id)->get();
-        
+
         return view('web.pages.product.detail', [
             'product' => $product,
             'images' => $images

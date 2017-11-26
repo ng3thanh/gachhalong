@@ -39,7 +39,7 @@
 									<img src="{{ asset('images/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{ URL::route('product_detail', $product->id) }}" class="link-product-add-cart">Quick View</a>
+											<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -47,7 +47,7 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="{{ URL::route('product_detail', $product->id) }}">{{ $product->name }}</a>
+										<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}">{{ $product->name }}</a>
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price">Liên hệ</span>
