@@ -67,27 +67,19 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Mô tả</label>
 									<div class="col-sm-9 box-body pad">
-										<form>
-											<textarea id="ckediter" name="description" rows="10"
-												cols="80"></textarea>
-										</form>
+										<textarea id="ckediter" name="description" rows="10" cols="80"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Thông tin</label>
 									<div class="col-sm-9 box-body pad">
-										<form>
-											<textarea id="ckediter1" name="information" rows="10"
-												cols="80"></textarea>
-										</form>
+										<textarea id="ckediter1" name="information" rows="10" cols="80"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Thông số kỹ thuật </label>
 									<div class="col-sm-9 box-body pad">
-										<form>
-											<textarea id="ckediter2" name="digital" rows="10" cols="80"></textarea>
-										</form>
+										<textarea id="ckediter2" name="digital" rows="10" cols="80"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
