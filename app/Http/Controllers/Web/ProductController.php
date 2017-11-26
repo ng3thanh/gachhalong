@@ -15,13 +15,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($menu_id)
+    public function index($slug, $menu_id)
     {
         $menuId = $menu_id;
         $paginate = Request::get('paginate', 10);
         
         $menuNow = Menu::where('id', $menuId)->first();
-        
+
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
         ->join('images', 'images.product_id', '=', 'products.id')
         ->select(
@@ -44,7 +44,7 @@ class ProductController extends Controller
 
         $menuData = Menu::all();
         
-        $parentMenu = Menu::whereColumn('parent_id', 'id')->get()->pluck('name', 'id');
+        $parentMenu = Menu::whereColumn('parent_id', 'id')->get();
         
         $menuProduct = $menuData->mapToGroups(function ($item, $key) {
             return [
@@ -87,13 +87,14 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug, $id)
     {
+
         $product = Product::join('menus', 'menus.id', '=', 'products.menu_id')->select('products.id', 'products.name', 'products.price', 'products.description', 'products.star', 'products.digital', 'products.information', 'menus.name AS menu_name')
             ->where('publish_start', '<=', date('Y-m-d H:i:s'))
             ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->findOrFail($id);
-        
+
         $images = Image::where('product_id', $id)->get();
 
         return view('web.pages.product.detail', [

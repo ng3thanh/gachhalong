@@ -20,14 +20,16 @@
 				<ul class="tree-list-pad">
 					@foreach($parentMenu as $key => $groupMenu)
 					<li>
-    					<input type="checkbox" checked="checked" id="item-{{ $key }}" />
-    					<label for="item-{{ $key }}"><span></span><a href="{{ URL::route('product', $key) }}">{{ $groupMenu }}</a></label>
+    					<input type="checkbox" checked="checked" id="item-{{ $groupMenu->id }}" />
+    					<label for="item-{{ $key }}">
+    						<span></span>
+    						<a href="{{ URL::route('product', [$groupMenu->slug, $groupMenu->id]) }}">{{ $groupMenu->name }}</a></label>
 						<ul>
-							@foreach($menuProduct[$key] as $k => $menu)
+							@foreach($menuProduct[$groupMenu->id] as $k => $menu)
     							@if($menu->id != $menu->parent_id)
     							<li>
-    								<input type="checkbox" id="item-{{ $key }}-{{ $k }}" />
-    								<label for="item-{{ $key }}-{{ $k }}">{{ $menu->name }}</label>
+    								<input type="checkbox" id="item-{{ $groupMenu->id }}-{{ $k }}" />
+    								<label for="item-{{ $groupMenu->id }}-{{ $k }}">{{ $menu->name }}</label>
     							</li>
     							@endif
 							@endforeach
@@ -38,6 +40,7 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
+		
 		<div class="col-md-8 products-right">
 			<div class="sort-grid">
 				<div class="sorting">
@@ -85,14 +88,14 @@
 						<img src="{{ asset('images/'. $product->image_name) }}" alt="" class="pro-image-back">
 						<div class="men-cart-pro">
 							<div class="inner-men-cart-pro">
-								<a href="{{ URL::route('product_detail', $product->id) }}" class="link-product-add-cart">Quick View</a>
+								<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>
 							</div>
 						</div>
 						<span class="product-new-top">New</span>
 					</div>
 					<div class="item-info-product ">
 						<h4>
-							<a href="{{ URL::route('product_detail', $product->id) }}">{{ $product->name }}</a>
+							<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}">{{ $product->name }}</a>
 						</h4>
 					</div>
 				</div>

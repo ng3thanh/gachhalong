@@ -56,7 +56,7 @@ class LoginController extends Controller
                 'email' => $request->email,
                 'password' => $request->password
             ])) {
-                return Redirect::route('main');
+                return Redirect::route('dashboard');
             } else {
                 $errors = 'Tên đăng nhập hoặc mật khẩu không đúng.';
             }
