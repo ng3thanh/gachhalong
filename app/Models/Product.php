@@ -44,6 +44,7 @@ class Product extends Model
         'digital',
         'information',
         'tag',
+        'status',
         'publish_start',
         'publish_end'
     ];

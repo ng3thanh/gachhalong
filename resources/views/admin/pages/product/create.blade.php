@@ -112,7 +112,7 @@
 										<div class="col-sm-3">
 											<div class="input-group">
 												<span class="input-group-addon"> <input type="checkbox"
-													name="status[]" value="1">
+													name="status" value="1">
 												</span> <input type="text" style="background-color: #00a65a"
 													class="form-control" disabled value="Đang hiện">
 											</div>
@@ -121,7 +121,7 @@
 										<div class="col-sm-3">
 											<div class="input-group">
 												<span class="input-group-addon"> <input type="checkbox"
-													name="status[]" value="2">
+													name="status" value="2">
 												</span> <input type="text" class="form-control"
 													style="background-color: #00c0ef" disabled
 													value="Chưa hiện">
@@ -131,7 +131,7 @@
 										<div class="col-sm-3">
 											<div class="input-group">
 												<span class="input-group-addon"> <input type="checkbox"
-													name="status[]" value="3">
+													name="status" value="3">
 												</span> <input type="text" class="form-control"
 													style="background-color: #f39c12" disabled
 													value="Không hiện">
@@ -141,7 +141,7 @@
 										<div class="col-sm-3">
 											<div class="input-group">
 												<span class="input-group-addon"> <input type="checkbox"
-													name="status[]" value="4">
+													name="status" value="4">
 												</span> <input type="text" class="form-control"
 													style="background-color: #dd4b39" disabled value="Đã xóa">
 											</div>

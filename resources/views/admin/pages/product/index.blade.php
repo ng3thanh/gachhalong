@@ -166,10 +166,10 @@
 							</td>
 							<td>{{ $product->price ? $product->price : "Chưa cập nhật" }}</td>
 							<td>
-								<span class="short-text" style="width: 300px;">{{ $product->description }}</span>
+								<span class="short-text" style="width: 300px;">{!! $product->description !!}</span>
 							</td>
-							<td>{{ $product->publish_start }}</td>
-							<td>{{ $product->publish_end }}</td>
+							<td>{{ date('d/m/Y', strtotime($product->publish_start)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($product->publish_end)) }}</td>
 							<td>
     							@if($product->status == 4)
     								<span class="label label-danger">Đã xóa</span> 

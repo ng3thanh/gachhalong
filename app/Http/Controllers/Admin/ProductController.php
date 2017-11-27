@@ -6,6 +6,10 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestParameter;
 use App\Models\Menu;
+use App\Models\Image;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -98,9 +102,53 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request            
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        dd($request->all());
+        try {
+            DB::beginTransaction();
+            
+            $product = new Product();
+            $product->menu_id = $request->menu;
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->digital = $request->digital;
+            $product->information = $request->information;
+            $product->status = $request->status;
+            $product->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->publish_time, 0, 10)));
+            $product->publish_end = date('Y-m-d 23:59:59', strtotime(substr($request->publish_time, - 10)));
+            $product->save();
+            
+            $mainImage = $request->file('main-img');
+            $mainName = time().$mainImage->getClientOriginalName();
+            $mainImage->move(public_path('upload/images'), $mainName);
+            $mainImageData = new Image();
+            $mainImageData->product_id = $product->id;
+            $mainImageData->name = $mainName;
+            $mainImageData->alt = $product->name;
+            $mainImageData->is_main_image = Image::IS_MAIN_IMAGE;
+            $mainImageData->save();
+            
+            $moreImages = $request->file('more-img');
+            foreach ($moreImages as $key => $moreImage) {
+
+                $moreName = time().$mainImage->getClientOriginalName();
+                $moreImage->move(public_path('upload/images'), $moreName);
+                $moreImageData = new Image();
+                $moreImageData->product_id = $product->id;
+                $moreImageData->name = $moreName;
+                $moreImageData->alt = $product->name;
+                $moreImageData->is_main_image = Image::IS_NOT_MAIN_IMAGE;
+                $moreImageData->save();
+            }
+            
+            DB::commit();
+            return Redirect::route('product.index')->with('success', 'Tạo mới sản phẩm thành công!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::route('product.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: '. $e->getMessage());
+        }
+        
     }
 
     /**
