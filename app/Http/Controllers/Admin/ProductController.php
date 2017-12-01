@@ -2,14 +2,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as RequestParameter;
-use App\Models\Menu;
+use App\Http\Requests\ProductRequest;
 use App\Models\Image;
+use App\Models\Menu;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Request as RequestParameter;
 
 class ProductController extends Controller
 {
@@ -110,6 +109,7 @@ class ProductController extends Controller
             $product = new Product();
             $product->menu_id = $request->menu;
             $product->name = $request->name;
+            $product->slug = str_slug($request->name);
             $product->price = $request->price;
             $product->description = $request->description;
             $product->digital = $request->digital;
@@ -170,10 +170,20 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $allMenu = Menu::all();
+        $menus = $allMenu->mapToGroups(function ($item, $key) {
+            return [
+                $item['parent_id'] => $item
+            ];
+        });
         $product = Product::findOrFail($id);
+        $images = Image::where('product_id', $id)->get();
 
         return view('admin.pages.product.edit', [
             'product' => $product,
+            'menus'   => $menus, 
+            'allMenu' => $allMenu,
+            'images'  => $images
         ]);
     }
 
@@ -184,9 +194,59 @@ class ProductController extends Controller
      * @param int $id            
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $product = Product::find($id);
+            $product->menu_id = $request->menu;
+            $product->name = $request->name;
+            $product->slug = str_slug($request->name);
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->digital = $request->digital;
+            $product->information = $request->information;
+            $product->status = $request->status;
+            $product->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->publish_time, 0, 10)));
+            $product->publish_end = date('Y-m-d 23:59:59', strtotime(substr($request->publish_time, - 10)));
+            $product->save();
+            
+            $mainImage = $request->file('main-img');
+            if ($mainImage) {
+                $deleteOld = Image::where('product_id', $id)->where('is_main_image', Image::IS_MAIN_IMAGE)->delete();
+                
+                $mainName = time().$mainImage->getClientOriginalName();
+                $mainImage->move(public_path('upload/images'), $mainName);
+                $mainImageData = new Image();
+                $mainImageData->product_id = $id;
+                $mainImageData->name = $mainName;
+                $mainImageData->alt = $product->name;
+                $mainImageData->is_main_image = Image::IS_MAIN_IMAGE;
+                $mainImageData->save();
+            }
+            
+            $moreImages = $request->file('more-img');
+            if ($mainImage) {
+                foreach ($moreImages as $key => $moreImage) {
+                    
+                    $moreName = time().$mainImage->getClientOriginalName();
+                    $moreImage->move(public_path('upload/images'), $moreName);
+                    $moreImageData = new Image();
+                    $moreImageData->product_id = $id;
+                    $moreImageData->name = $moreName;
+                    $moreImageData->alt = $product->name;
+                    $moreImageData->is_main_image = Image::IS_NOT_MAIN_IMAGE;
+                    $moreImageData->save();
+                }
+            }
+            
+            DB::commit();
+            return Redirect::route('product.index')->with('success', 'Sửa sản phẩm thành công!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::route('product.index')->with('error', 'Đã xảy ra lỗi khi sửa sản phẩm: '. $e->getMessage());
+        }
     }
 
     /**

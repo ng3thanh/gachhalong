@@ -190,27 +190,6 @@
         //Date range picker with time picker
         $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' });
   	});
-  
-	var getUrlParameter = function getUrlParameter(sParam) {
-    	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-    
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-    
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-	};
-
-	var time = getUrlParameter('publish_time');
-
-	if (typeof time !== "undefined") {
-	    $('#reservationtime').val(time.replace(/\+/g, ' '));
-	}
 
 	$('input[name="status"]').on('change', function() {
 		$('input[name="status"]').not(this).prop('checked', false);
