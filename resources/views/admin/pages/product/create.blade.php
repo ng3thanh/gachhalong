@@ -35,15 +35,13 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Tên sản phẩm</label>
 									<div class="col-sm-9">
-										<input type="text" name="name" class="form-control"
-											placeholder="Tên sản phẩm ..." value="{{ old('name') }}">
+										<input type="text" name="name" class="form-control" placeholder="Tên sản phẩm ..." value="{{ old('name') }}">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Danh mục</label>
 									<div class="col-sm-9">
-										<select class="form-control select2" name="menu"
-											style="width: 100%;">
+										<select class="form-control select2" name="menu" style="width: 100%;">
 											@foreach($menus as $key => $menu)
 											<?php $check = $key - 1; ?>
 											<optgroup label="{{ $allMenu[$check]->name }}">
@@ -60,8 +58,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Giá</label>
 									<div class="col-sm-9">
-										<input type="text" name="price" class="form-control"
-											placeholder="Giá ..." value="{{ old('price') }}">
+										<input type="text" name="price" class="form-control" placeholder="Giá ..." value="{{ old('price') }}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -101,8 +98,7 @@
 											<div class="input-group-addon">
 												<i class="fa fa-clock-o"></i>
 											</div>
-											<input type="text" class="form-control pull-right"
-												id="reservationtime" name="publish_time">
+											<input type="text" class="form-control pull-right" id="reservationtime" name="publish_time">
 										</div>
 									</div>
 								</div>
@@ -111,39 +107,37 @@
 									<div class="col-sm-9">
 										<div class="col-sm-3">
 											<div class="input-group">
-												<span class="input-group-addon"> <input type="checkbox"
-													name="status" value="1">
-												</span> <input type="text" style="background-color: #00a65a"
-													class="form-control" disabled value="Đang hiện">
+												<span class="input-group-addon"> 
+													<input type="checkbox" checked="checked" name="status" value="1">
+												</span> 
+												<input type="text" style="background-color: #00a65a" class="form-control" disabled value="Đang hiện">
 											</div>
 											<!-- /input-group -->
 										</div>
 										<div class="col-sm-3">
 											<div class="input-group">
-												<span class="input-group-addon"> <input type="checkbox"
-													name="status" value="2">
-												</span> <input type="text" class="form-control"
-													style="background-color: #00c0ef" disabled
-													value="Chưa hiện">
+												<span class="input-group-addon"> 
+													<input type="checkbox" name="status" value="2">
+												</span> 
+												<input type="text" class="form-control" style="background-color: #00c0ef" disabled value="Chưa hiện">
 											</div>
 											<!-- /input-group -->
 										</div>
 										<div class="col-sm-3">
 											<div class="input-group">
-												<span class="input-group-addon"> <input type="checkbox"
-													name="status" value="3">
-												</span> <input type="text" class="form-control"
-													style="background-color: #f39c12" disabled
-													value="Không hiện">
+												<span class="input-group-addon"> 
+													<input type="checkbox" name="status" value="3">
+												</span> 
+												<input type="text" class="form-control" style="background-color: #f39c12" disabled value="Không hiện">
 											</div>
 											<!-- /input-group -->
 										</div>
 										<div class="col-sm-3">
 											<div class="input-group">
-												<span class="input-group-addon"> <input type="checkbox"
-													name="status" value="4">
-												</span> <input type="text" class="form-control"
-													style="background-color: #dd4b39" disabled value="Đã xóa">
+												<span class="input-group-addon"> 
+													<input type="checkbox" name="status" value="4">
+												</span> 
+												<input type="text" class="form-control" style="background-color: #dd4b39" disabled value="Đã xóa">
 											</div>
 											<!-- /input-group -->
 										</div>
@@ -218,5 +212,8 @@
 	    $('#reservationtime').val(time.replace(/\+/g, ' '));
 	}
 
+	$('input[name="status"]').on('change', function() {
+		$('input[name="status"]').not(this).prop('checked', false);
+	});
 </script>
 @endsection
