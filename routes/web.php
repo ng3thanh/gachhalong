@@ -41,6 +41,13 @@ Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function 
         Route::resource('product', 'ProductController');
         Route::resource('document', 'DocumentController');
         Route::resource('contact', 'ContactController');
+        
+        Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');
+        Route::get('create-menu', 'ProductController@createMenu')->name('menu.create');
+        Route::get('edit-menu/{id}', 'ProductController@editMenu')->name('menu.edit');
+        Route::post('create-menu', 'ProductController@storeMenu')->name('menu.store');
+        Route::post('edit-menu/{id}', 'ProductController@updateMenu')->name('menu.update');
+        Route::post('delete-menu/{id}', 'ProductController@destroyMenu')->name('menu.destroy');
     });
     
     Route::get('/login', 'LoginController@getLogin')->name('get_login');

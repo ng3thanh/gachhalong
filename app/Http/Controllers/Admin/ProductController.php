@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as RequestParameter;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -256,6 +257,42 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+    
+    public function listMenu()
+    {
+        $allMenu = Menu::all();
+        $menus = $allMenu->mapToGroups(function ($item, $key) {
+            return [
+                $item['parent_id'] => $item
+            ];
+        });
+        return view('admin.pages.menu.index', ['menus' => $menus, 'allMenu' => $allMenu]);
+    }
+    
+    public function createMenu()
+    {
+        
+    }
+    
+    public function storeMenu(Request $request)
+    {
+        
+    }
+    
+    public function editMenu($id)
+    {
+        
+    }
+    
+    public function updateMenu(Request $request)
+    {
+        
+    }
+    
+    public function destroyMenu($id)
     {
         //
     }

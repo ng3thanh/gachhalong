@@ -46,13 +46,18 @@
 					<i class="fa fa-users"></i> 
 					<span> Giới thiệu</span> 
 					<span class="pull-right-container"> 
-						<span class="label label-primary pull-right">4</span>
+						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
 					<li>
 						<a href="{{ URL::route('introduce.index') }}">
 							<i class="fa fa-circle-o"></i> Danh mục giới thiệu
+						</a>
+					</li>
+					<li>
+						<a href="{{ URL::route('introduce.create') }}">
+							<i class="fa fa-plus-circle"></i> Thêm mới bài giới thiệu
 						</a>
 					</li>
 				</ul>
@@ -67,6 +72,11 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
+					<li>
+						<a href="{{ URL::route('menu.index') }}">
+							<i class="fa fa-list"></i> Danh mục sản phẩm
+						</a>
+					</li>
 					<li>
 						<a href="{{ URL::route('product.index') }}">
 							<i class="fa fa-list"></i> Danh mục sản phẩm
@@ -90,8 +100,13 @@
 				</a>
 				<ul class="treeview-menu">
 					<li>
-						<a href="pages/UI/general.html">
-							<i class="fa fa-circle-o"></i>General
+						<a href="{{ URL::route('document.index') }}">
+							<i class="fa fa-list"></i> Danh sách tài liệu
+						</a>
+					</li>
+					<li>
+						<a href="{{ URL::route('document.create') }}">
+							<i class="fa fa-plus-circle"></i> Thêm mới tài liệu
 						</a>
 					</li>
 				</ul>
@@ -118,40 +133,6 @@
 					<li>
 						<a href="pages/forms/general.html">
 							<i class="fa fa-circle-o"></i>General Elements
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li class="treeview">
-				<a href="#"> 
-					<i class="fa fa-bitcoin"></i> 
-					<span> Bitcoin Tracking</span>
-					<span class="pull-right-container"> 
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li>
-						<a href="{{ URL::route('main') }}">
-							<i class="fa fa-circle-o"></i>Normal Tracking
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li class="treeview">
-				<a href="#"> 
-					<i class="fa fa-object-group"></i> 
-					<span> Website Tracking</span>
-					<span class="pull-right-container"> 
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li>
-						<a href="pages/tables/simple.html">
-							<i class="fa fa-circle-o"></i>Simple tables
 						</a>
 					</li>
 				</ul>
