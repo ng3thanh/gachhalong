@@ -22,7 +22,9 @@
 							<th>Hành động</th>
 						</tr>
 						@foreach($menus as $k => $v)
-							<tr class="body-table">AAAAAAA<tr>
+							<tr class="body-table">
+								<td colspan="5" style="text-align: left; background-color: #f4f4f4">{{ $allMenu[$k-1]->name }}</td>
+							<tr>
     						@foreach($v as $menu)
     						<tr class="body-table">
     							<td>{{ $number++ }}</td>
