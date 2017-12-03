@@ -74,7 +74,12 @@
 				<ul class="treeview-menu">
 					<li>
 						<a href="{{ URL::route('menu.index') }}">
-							<i class="fa fa-list"></i> Danh mục sản phẩm
+							<i class="fa fa-asterisk"></i> Danh sách menu
+						</a>
+					</li>
+					<li>
+						<a href="{{ URL::route('menu.create') }}">
+							<i class="fa fa-edit"></i> Thêm mới menu
 						</a>
 					</li>
 					<li>
