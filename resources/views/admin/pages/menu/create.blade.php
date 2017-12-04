@@ -1,9 +1,9 @@
-@extends('admin.layout') @section('title', 'Thêm mới sản phẩm')
+@extends('admin.layout') 
+@section('title', 'Thêm mới menu')
 
-@section('css')
-<!-- Select2 -->
-<link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">
-@endsection @section('content')
+@section('css')@endsection 
+
+@section('content')
 <section class="content">
 
 	<!-- SELECT2 EXAMPLE -->
@@ -25,9 +25,7 @@
 		<div class="box-body">
 			<div class="row">
 				<div class="box-body">
-					<form role="form" id="create-new-product" class="form-horizontal"
-						action="{{ URL::route('product.store') }}" method="POST"
-						enctype="multipart/form-data">
+					<form role="form" id="create-new-menu" class="form-horizontal" action="{{ URL::route('menu.store') }}" method="POST">
 						{{ csrf_field() }}
 						<!-- text input -->
 						<div>
@@ -149,19 +147,16 @@
 						<!-- /.row -->
 					</form>
 
-					<div class="box-footer col-xs-12"
-						style="margin-top: 20px; padding-top: 20px">
+					<div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
 						<div class="col-xs-8 col-xs-offset-2">
 							<div class="col-xs-3">
-								<button class="btn btn-block btn-default"
-									form="create-new-product" type="submit">Thêm mới</button>
+								<button class="btn btn-block btn-default" form="create-new-menu" type="submit">Thêm mới</button>
 							</div>
 							<div class="col-xs-offset-1 col-xs-3">
 								<button class="btn btn-block btn-default">Làm lại</button>
 							</div>
 							<div class="col-xs-offset-1 col-xs-3">
-								<a href="{{ URL::route('product.index') }}"
-									class="btn btn-block btn-default">Quay về</a>
+								<a href="{{ URL::route('menu.index') }}" class="btn btn-block btn-default">Quay về</a>
 							</div>
 						</div>
 					</div>
@@ -171,28 +166,15 @@
 		</div>
 	</div>
 </section>
-@endsection @section('script')
-<script src="{{ asset('admin/js/select2.full.min.js') }}"></script>
+@endsection 
 
-<!-- date-range-picker -->
-<script src="{{ asset('admin/js/daterangepicker.js') }}"></script>
-
+@section('script')
 <!-- CK Editor -->
 <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
 <script>
   	$(function () {
   	  	// CKEditer
   	  	CKEDITOR.replace('ckediter');
-  	  	CKEDITOR.replace('ckediter1');
-  	  	CKEDITOR.replace('ckediter2');
-        //Initialize Select2 Elements
-        $('.select2').select2();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' });
   	});
-
-	$('input[name="status"]').on('change', function() {
-		$('input[name="status"]').not(this).prop('checked', false);
-	});
 </script>
 @endsection
