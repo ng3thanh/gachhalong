@@ -9,11 +9,10 @@
 	<!-- SELECT2 EXAMPLE -->
 	<div class="box box-default">
 		<div class="box-header with-border">
-			<h3 class="box-title">Thêm mới sản phẩm</h3>
+			<h3 class="box-title">Thêm mới menu</h3>
 
 			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool"
-					data-widget="collapse">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse">
 					<i class="fa fa-minus"></i>
 				</button>
 				<button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -31,117 +30,36 @@
 						<div>
 							<div class="col-xs-12">
 								<div class="form-group">
-									<label class="col-sm-3 control-label"> Tên sản phẩm</label>
+									<label class="col-sm-3 control-label"> Tên menu</label>
 									<div class="col-sm-9">
-										<input type="text" name="name" class="form-control" placeholder="Tên sản phẩm ..." value="{{ old('name') }}">
+										<input type="text" name="name" class="form-control" placeholder="Tên menu ..." value="{{ old('name') }}">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Danh mục</label>
+									<label class="col-sm-3 control-label">Thuộc về</label>
 									<div class="col-sm-9">
 										<select class="form-control select2" name="menu" style="width: 100%;">
+											<option value=""> Menu mới</option> 
 											@foreach($menus as $key => $menu)
-											<?php $check = $key - 1; ?>
-											<optgroup label="{{ $allMenu[$check]->name }}">
-												@foreach($menu as $k => $v)
-												<option
-													value="{{ !empty(old('menu')) ? old('menu') : $v->id }}">{{
-													$v->name }}</option>
-												@endforeach
-											</optgroup> @endforeach
+												<option value="{{ !empty(old('menu')) ? old('menu') : $menu->id }}">{{ $menu->name }}</option> 
+											@endforeach
 										</select>
 									</div>
 								</div>
 
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Giá</label>
-									<div class="col-sm-9">
-										<input type="text" name="price" class="form-control" placeholder="Giá ..." value="{{ old('price') }}">
-									</div>
-								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Mô tả</label>
 									<div class="col-sm-9 box-body pad">
 										<textarea id="ckediter" name="description" rows="10" cols="80"></textarea>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Thông tin</label>
-									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter1" name="information" rows="10" cols="80"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Thông số kỹ thuật </label>
-									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter2" name="digital" rows="10" cols="80"></textarea>
-									</div>
-								</div>
+								
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Ảnh chính </label>
 									<div class="col-sm-9">
 										<input type="file" name="main-img">
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Ảnh phụ </label>
-									<div class="col-sm-9">
-										<input type="file" name="more-img[]" multiple>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Thời gian đăng</label>
-									<div class="col-sm-9">
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-clock-o"></i>
-											</div>
-											<input type="text" class="form-control pull-right" id="reservationtime" name="publish_time">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label"> Trạng thái</label>
-									<div class="col-sm-9">
-										<div class="col-sm-3">
-											<div class="input-group">
-												<span class="input-group-addon"> 
-													<input type="checkbox" checked="checked" name="status" value="1">
-												</span> 
-												<input type="text" style="background-color: #00a65a" class="form-control" disabled value="Đang hiện">
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-sm-3">
-											<div class="input-group">
-												<span class="input-group-addon"> 
-													<input type="checkbox" name="status" value="2">
-												</span> 
-												<input type="text" class="form-control" style="background-color: #00c0ef" disabled value="Chưa hiện">
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-sm-3">
-											<div class="input-group">
-												<span class="input-group-addon"> 
-													<input type="checkbox" name="status" value="3">
-												</span> 
-												<input type="text" class="form-control" style="background-color: #f39c12" disabled value="Không hiện">
-											</div>
-											<!-- /input-group -->
-										</div>
-										<div class="col-sm-3">
-											<div class="input-group">
-												<span class="input-group-addon"> 
-													<input type="checkbox" name="status" value="4">
-												</span> 
-												<input type="text" class="form-control" style="background-color: #dd4b39" disabled value="Đã xóa">
-											</div>
-											<!-- /input-group -->
-										</div>
-									</div>
-								</div>
-								<!-- /.form-group -->
 							</div>
 						</div>
 						<!-- /.row -->

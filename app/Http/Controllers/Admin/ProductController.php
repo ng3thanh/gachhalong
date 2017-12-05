@@ -274,7 +274,9 @@ class ProductController extends Controller
     
     public function createMenu()
     {
-        
+        $menus = Menu::whereColumn('id', 'parent_id')->get();
+
+        return view('admin.pages.menu.create', ['menus' => $menus]);
     }
     
     public function storeMenu(Request $request)
