@@ -32,14 +32,14 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Tên menu</label>
 									<div class="col-sm-9">
-										<input type="text" name="name" class="form-control" placeholder="Tên menu ..." value="{{ old('name') }}">
+										<input type="text" name="menu-name" class="form-control" placeholder="Tên menu ..." value="{{ old('name') }}">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Thuộc về</label>
 									<div class="col-sm-9">
-										<select class="form-control select2" name="menu" style="width: 100%;">
-											<option value=""> Menu mới</option> 
+										<select class="form-control select2" name="menu-menu" style="width: 100%;">
+											<option value="0"> Menu mới</option> 
 											@foreach($menus as $key => $menu)
 												<option value="{{ !empty(old('menu')) ? old('menu') : $menu->id }}">{{ $menu->name }}</option> 
 											@endforeach
@@ -50,14 +50,14 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Mô tả</label>
 									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter" name="description" rows="10" cols="80"></textarea>
+										<textarea id="ckediter" name="menu-description" rows="10" cols="80"></textarea>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Ảnh chính </label>
 									<div class="col-sm-9">
-										<input type="file" name="main-img">
+										<input type="file" name="menu-main-img">
 									</div>
 								</div>
 							</div>

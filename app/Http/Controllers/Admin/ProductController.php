@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as RequestParameter;
 use Illuminate\Http\Request;
+use App\Http\Requests\MenuRequest;
 
 class ProductController extends Controller
 {
@@ -279,7 +280,7 @@ class ProductController extends Controller
         return view('admin.pages.menu.create', ['menus' => $menus]);
     }
     
-    public function storeMenu(Request $request)
+    public function storeMenu(MenuRequest $request)
     {
         
     }
@@ -287,9 +288,10 @@ class ProductController extends Controller
     public function editMenu($id)
     {
         
+        return view('admin.pages.menu.edit', ['menus' => $menus]);
     }
     
-    public function updateMenu(Request $request)
+    public function updateMenu(MenuRequest $request)
     {
         
     }
