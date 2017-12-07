@@ -14,7 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.document.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.document.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.document.edit');
     }
 
     /**

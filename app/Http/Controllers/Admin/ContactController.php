@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.contact.index');
     }
 
     /**
@@ -46,7 +46,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.pages.contact.detail');
     }
 
     /**

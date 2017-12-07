@@ -46,7 +46,7 @@ class IntroduceController extends Controller
      */
     public function show($id)
     {
-        return view('admin.pages.introduce.detail');
+//         return view('admin.pages.introduce.detail');
     }
 
     /**
