@@ -24,10 +24,10 @@ class MenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'menu-name' => 'required|between:5,100|unique:menus,name',
-            'menu-menu' => 'required',
-            'menu-description' => 'required',
-            'menu-main-img' => 'required|mimes:jpeg,bmp,png',
+            'menu_name' => 'required|between:5,100|unique:menus,name',
+            'menu_menu' => 'required',
+            'menu_description' => 'required',
+            'menu_main_img' => 'required|mimes:jpeg,bmp,png,jpg',
         ];
     }
 }

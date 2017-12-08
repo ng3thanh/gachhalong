@@ -282,13 +282,35 @@ class ProductController extends Controller
     
     public function storeMenu(MenuRequest $request)
     {
-        
+        try {
+            DB::beginTransaction();
+            
+            $mainImage = $request->file('menu_main_img');   
+            $mainName = time().$mainImage->getClientOriginalName();
+            $mainImage->move(public_path('upload/images'), $mainName);
+            
+            $menu = new Menu();
+            $menu->name = $request->menu_name;
+            $menu->slug = str_slug($request->menu_name);
+            $menu->description = $request->menu_description;
+            $menu->parent_id = $request->menu_menu;
+            $menu->image = $mainName;
+            $menu->save();
+            
+            DB::commit();
+            return Redirect::route('menu.index')->with('success', 'Tạo mới menu thành công!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::route('menu.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: '. $e->getMessage());
+        }
     }
     
     public function editMenu($id)
     {
+        $data = Menu::findOrFail($id);
+        $menus = Menu::whereColumn('id', 'parent_id')->get();
         
-        return view('admin.pages.menu.edit', ['menus' => $menus]);
+        return view('admin.pages.menu.edit', ['menus' => $menus, 'data' => $data]);
     }
     
     public function updateMenu(MenuRequest $request)

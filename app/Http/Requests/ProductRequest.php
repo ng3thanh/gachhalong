@@ -30,8 +30,8 @@ class ProductRequest extends FormRequest
             'description'   => 'required',
             'information'   => 'required',
             'digital'       => 'required',
-            'main-img'      => 'required|mimes:jpeg,bmp,png',
-            'more-img'      => 'mimes:jpeg,bmp,png',
+            'main-img'      => 'required|mimes:jpeg,bmp,png,jpg',
+            'more-img'      => 'mimes:jpeg,bmp,png,jpg',
             'publish_time'  => 'required|string',
             'status'        => 'required'
         ];

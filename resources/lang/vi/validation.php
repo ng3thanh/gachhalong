@@ -126,7 +126,11 @@ return [
         'main-img'      => 'ảnh chính',
         'more-img'      => 'ảnh phụ',
         'publish_time'  => 'thời gian đăng',
-        'status'        => 'trạng thái'
+        'status'        => 'trạng thái',
+        'menu_name'     => 'tên menu',
+        'menu_menu'     => 'menu cha',
+        'menu_description' => 'mô tả menu',
+        'menu_main_img' => 'ảnh menu',
     ],
 
 ];
