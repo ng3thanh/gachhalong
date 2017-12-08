@@ -1,4 +1,4 @@
-@extends('admin.layout') @section('title', 'Danh sách sản phẩm')
+@extends('admin.layout') @section('title', 'Danh sách bài giới thiệu')
 
 @section('css') 
 <!-- Select2 -->
@@ -17,12 +17,12 @@
 				</div>
 				
 				<div class="box-body">
-					<form role="form" class="form-horizontal" action="{{ URL::route('product.index') }}" method="get">
+					<form role="form" class="form-horizontal" action="{{ URL::route('introduce.index') }}" method="get">
 						<!-- text input -->
 						<div>
 							<div class="col-xs-6">
         						<div class="form-group">
-        							<label class="col-sm-3 control-label"> Tên sản phẩm</label> 
+        							<label class="col-sm-3 control-label"> Tên bài viết</label> 
         							<div class="col-sm-9">
         								<input type="text" name="name" class="form-control" placeholder="Tên sản phẩm ..." value="{{ Request::get('name') ? Request::get('name') : null }}">
         							</div>
@@ -127,7 +127,7 @@
 								</button>
 							</div>
 							<div class="col-xs-offset-2 col-xs-5">
-								<a href="{{ URL::route('product.create') }}" class="btn btn-block btn-success btn-sm col-xs-offset-1 col-xs-1">
+								<a href="{{ URL::route('introduce.create') }}" class="btn btn-block btn-success btn-sm col-xs-offset-1 col-xs-1">
 									<i class="fa fa-plus"></i> &nbsp;&nbsp;Tạo mới
 								</a>
 							</div>
@@ -147,50 +147,49 @@
 					<table class="table table-hover">
 						<tr class="header-table">
 							<th>ID</th>
-							<th>Tên sản phẩm</th>
-							<th>Giá</th>
+							<th>Tiêu đề</th>
 							<th>Mô tả ngắn</th>
+							<th>Ảnh</th>
 							<th>Ngày hiển thị</th>
 							<th>Ngày kết thúc</th>
-							<th>Trạng thái</th>
 							<th>Hành động</th>
 						</tr>
-						@foreach($products as $product)
+						@foreach($news as $new)
 						<tr class="body-table">
 							
 							<td>{{ $number++ }}</td>
 							<td class="text-left">
-								<a href="{{ URL::route('product_detail', ['slug' => $product->slug, 'id' => $product->id]) }}" target="_blank">
-									<span class="short-text" style="width: 200px;">{{ $product->name }}</span>
+								<a href="{{ URL::route('introduce_detail', ['slug' => $new->slug, 'id' => $new->id]) }}" target="_blank">
+									<span class="short-text" style="width: 200px;">{{ $new->name }}</span>
 								</a>
 							</td>
-							<td>{{ $product->price ? $product->price : "Chưa cập nhật" }}</td>
+							<td>{{ $new->price ? $new->price : "Chưa cập nhật" }}</td>
 							<td>
-								<span class="short-text" style="width: 300px;">{!! $product->description !!}</span>
+								<span class="short-text" style="width: 300px;">{!! $new->description !!}</span>
 							</td>
-							<td>{{ date('d/m/Y', strtotime($product->publish_start)) }}</td>
-							<td>{{ date('d/m/Y', strtotime($product->publish_end)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($new->publish_start)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($new->publish_end)) }}</td>
 							<td>
-    							@if($product->status == 4)
+    							@if($new->status == 4)
     								<span class="label label-danger">Đã xóa</span> 
-    							@elseif($product->status == 3)
+    							@elseif($new->status == 3)
     								<span class="label label-warning">Hết hiển thị</span> 
-    							@elseif($product->status == 2) 
+    							@elseif($new->status == 2) 
     								<span class="label label-info">Chưa hiển thị</span> 
     							@else 
     								<span class="label label-success">Đang hiển thị</span>
     							@endif
 							</td>
 							<td>
-								<a href="{{ URL::route('product.edit', $product->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
-								<a href="{{ URL::route('product.destroy', $product->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
+								<a href="{{ URL::route('introduce.edit', $new->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
+								<a href="{{ URL::route('introduce.destroy', $new->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
 							</td>
 						</tr>
 						@endforeach
 					</table>
 					<div class="text-center">
 						{{ 
-							$products->appends(
+							$news->appends(
                             	array("name" => Request::get('name'),
                                       "status" => Request::get('status'),
                                       "publish_time" => Request::get('publish_time'),

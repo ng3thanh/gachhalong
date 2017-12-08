@@ -34,7 +34,7 @@ class AddSlugForTable extends Migration
         });
         
         Schema::table('menus', function (Blueprint $table) {
-            $table->string('slug')->after('name');
+            $table->dropColumn('slug');
         });
     }
 }
