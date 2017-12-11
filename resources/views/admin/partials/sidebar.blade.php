@@ -44,20 +44,20 @@
 			<li class="treeview">
 				<a href="#"> 
 					<i class="fa fa-users"></i> 
-					<span> Giới thiệu</span> 
+					<span> Tin tức</span> 
 					<span class="pull-right-container"> 
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
 					<li>
-						<a href="{{ URL::route('introduce.index') }}">
-							<i class="fa fa-circle-o"></i> Danh mục giới thiệu
+						<a href="{{ URL::route('news.index') }}">
+							<i class="fa fa-circle-o"></i> Danh sách tin tức
 						</a>
 					</li>
 					<li>
-						<a href="{{ URL::route('introduce.create') }}">
-							<i class="fa fa-plus-circle"></i> Thêm mới bài giới thiệu
+						<a href="{{ URL::route('news.create') }}">
+							<i class="fa fa-plus-circle"></i> Thêm mới tin tức
 						</a>
 					</li>
 				</ul>
@@ -90,28 +90,6 @@
 					<li>
 						<a href="{{ URL::route('product.create') }}">
 							<i class="fa fa-plus-circle"></i> Thêm mới sản phẩm
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li class="treeview">
-				<a href="#"> 
-					<i class="fa fa-laptop"></i> 
-					<span> Tài liệu</span> 
-					<span class="pull-right-container"> 
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li>
-						<a href="{{ URL::route('document.index') }}">
-							<i class="fa fa-list"></i> Danh sách tài liệu
-						</a>
-					</li>
-					<li>
-						<a href="{{ URL::route('document.create') }}">
-							<i class="fa fa-plus-circle"></i> Thêm mới tài liệu
 						</a>
 					</li>
 				</ul>

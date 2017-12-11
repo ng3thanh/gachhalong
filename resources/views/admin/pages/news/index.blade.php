@@ -17,7 +17,7 @@
 				</div>
 				
 				<div class="box-body">
-					<form role="form" class="form-horizontal" action="{{ URL::route('introduce.index') }}" method="get">
+					<form role="form" class="form-horizontal" action="{{ URL::route('news.index') }}" method="get">
 						<!-- text input -->
 						<div>
 							<div class="col-xs-6">
@@ -127,7 +127,7 @@
 								</button>
 							</div>
 							<div class="col-xs-offset-2 col-xs-5">
-								<a href="{{ URL::route('introduce.create') }}" class="btn btn-block btn-success btn-sm col-xs-offset-1 col-xs-1">
+								<a href="{{ URL::route('news.create') }}" class="btn btn-block btn-success btn-sm col-xs-offset-1 col-xs-1">
 									<i class="fa fa-plus"></i> &nbsp;&nbsp;Tạo mới
 								</a>
 							</div>

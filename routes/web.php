@@ -37,9 +37,8 @@ Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function 
     Route::middleware('admin')->group(function () {
         Route::get('/', 'DashBoardController@index')->name('dashboard');
         
-        Route::resource('introduce', 'IntroduceController');
         Route::resource('product', 'ProductController');
-        Route::resource('document', 'DocumentController');
+        Route::resource('news', 'NewsController');
         Route::resource('contact', 'ContactController');
         
         Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');

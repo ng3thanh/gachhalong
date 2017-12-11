@@ -24,7 +24,7 @@ class IntroduceController extends Controller
      */
     public function create()
     {
-        //
+        return view('web.pages.introduce.create');
     }
 
     /**
