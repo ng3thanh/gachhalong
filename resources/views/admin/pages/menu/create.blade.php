@@ -41,7 +41,7 @@
 										<select class="form-control select2" name="menu_menu" style="width: 100%;">
 											<option value="0"> Menu mới</option> 
 											@foreach($menus as $key => $menu)
-												<option value="{{ !empty(old('menu')) ? old('menu') : $menu->id }}">{{ $menu->name }}</option> 
+												<option value="{{ $menu->id }}">{{ $menu->name }}</option> 
 											@endforeach
 										</select>
 									</div>

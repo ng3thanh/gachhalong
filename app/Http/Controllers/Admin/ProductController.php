@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as RequestParameter;
 use Illuminate\Http\Request;
 use App\Http\Requests\MenuRequest;
+use App\Http\Requests\EditMenuRequest;
+use App\Http\Requests\EditProductRequest;
 
 class ProductController extends Controller
 {
@@ -196,7 +198,7 @@ class ProductController extends Controller
      * @param int $id            
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(EditProductRequest $request, $id)
     {
         try {
             DB::beginTransaction();
@@ -313,13 +315,37 @@ class ProductController extends Controller
         return view('admin.pages.menu.edit', ['menus' => $menus, 'data' => $data]);
     }
     
-    public function updateMenu(MenuRequest $request)
+    public function updateMenu(EditMenuRequest $request, $id)
     {
-        
+        try {
+            DB::beginTransaction();
+            
+            $mainImage = $request->file('menu_main_img');
+            if (isset($mainImage)) {
+                $mainName = time().$mainImage->getClientOriginalName();
+                $mainImage->move(public_path('upload/images'), $mainName);
+            } else {
+                $mainName = $request->menu_main_img_name;
+            }
+            
+            $menu = Menu::findOrFail($id);
+            $menu->name = $request->menu_name;
+            $menu->slug = str_slug($request->menu_name);
+            $menu->description = $request->menu_description;
+            $menu->parent_id = $request->menu_menu;
+            $menu->image = $mainName;
+            $menu->save();
+            
+            DB::commit();
+            return Redirect::route('menu.index')->with('success', 'Chỉnh sửa menu thành công!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::route('menu.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: '. $e->getMessage());
+        }
     }
     
     public function destroyMenu($id)
     {
-        //
+        
     }
 }

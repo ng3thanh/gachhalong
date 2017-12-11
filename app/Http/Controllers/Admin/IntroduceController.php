@@ -19,9 +19,6 @@ class IntroduceController extends Controller
         $limit = News::LIMIT;
         $name = RequestParameter::get('name', null);
         $publishTime = RequestParameter::get('publish_time', null);
-        $startPrice = RequestParameter::get('start_price', null);
-        $endPrice = RequestParameter::get('end_price', null);
-        $status = RequestParameter::get('status', []);
         
         $query = News::withTrashed()->where('type', News::TYPE_INTRODUCE);
         
