@@ -78,7 +78,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.news.create');
+        $type = config('news');
+        
+        return view('admin.pages.news.create', ['type' => $type]);
     }
     
     /**

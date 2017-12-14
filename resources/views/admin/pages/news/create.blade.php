@@ -43,8 +43,10 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Danh mục</label>
 									<div class="col-sm-9">
-										<select class="form-control select2" name="news_menu" style="width: 100%;">
-											
+										<select class="form-control" name="news_menu" style="width: 100%;">
+											@foreach($type as $key => $value)
+												<option value="{{ $key }}"> {{ $value }}</option>
+											@endforeach
 										</select>
 									</div>
 								</div>
