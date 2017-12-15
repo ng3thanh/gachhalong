@@ -66,7 +66,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Ảnh tin tức </label>
 									<div class="col-sm-9">
-										<input type="file" name="main-img">
+										<input type="file" name="news_main_img">
 									</div>
 								</div>
 								<div class="form-group">
@@ -76,7 +76,7 @@
 											<div class="input-group-addon">
 												<i class="fa fa-clock-o"></i>
 											</div>
-											<input type="text" class="form-control pull-right" id="reservationtime" name="publish_time">
+											<input type="text" class="form-control pull-right" id="reservationtime" name="news_publish_time">
 										</div>
 									</div>
 								</div>

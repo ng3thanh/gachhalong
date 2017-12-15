@@ -159,30 +159,22 @@
 							
 							<td>{{ $number++ }}</td>
 							<td class="text-left">
-								<a href="{{ URL::route('introduce_detail', ['slug' => $new->slug, 'id' => $new->id]) }}" target="_blank">
-									<span class="short-text" style="width: 200px;">{{ $new->name }}</span>
+								<a href="{{ URL::route('introduce') }}" target="_blank">
+									<span class="short-text" style="width: 200px;">{{ $new->title }}</span>
 								</a>
 							</td>
-							<td>{{ $new->price ? $new->price : "Chưa cập nhật" }}</td>
 							<td>
 								<span class="short-text" style="width: 300px;">{!! $new->description !!}</span>
 							</td>
+							<td>
+								<img src="{{ asset('upload/images/news/'.$new->image) }}" alt="{{ $new->title }}" width="50px" height="50px">
+							</td>
 							<td>{{ date('d/m/Y', strtotime($new->publish_start)) }}</td>
 							<td>{{ date('d/m/Y', strtotime($new->publish_end)) }}</td>
+							
 							<td>
-    							@if($new->status == 4)
-    								<span class="label label-danger">Đã xóa</span> 
-    							@elseif($new->status == 3)
-    								<span class="label label-warning">Hết hiển thị</span> 
-    							@elseif($new->status == 2) 
-    								<span class="label label-info">Chưa hiển thị</span> 
-    							@else 
-    								<span class="label label-success">Đang hiển thị</span>
-    							@endif
-							</td>
-							<td>
-								<a href="{{ URL::route('introduce.edit', $new->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
-								<a href="{{ URL::route('introduce.destroy', $new->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
+								<a href="{{ URL::route('news.edit', $new->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
+								<a href="{{ URL::route('news.destroy', $new->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
 							</td>
 						</tr>
 						@endforeach
