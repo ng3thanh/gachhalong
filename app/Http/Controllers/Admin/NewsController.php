@@ -81,7 +81,7 @@ class NewsController extends Controller
             
             $mainImage = $request->file('news_main_img');
             $mainName = time() . $mainImage->getClientOriginalName();
-            $mainImage->move(public_path('upload/images/news/'), $mainName);
+            $mainImage->move(public_path('upload/images/news'), $mainName);
             
             $news = new News();
             $news->title = $request->news_title;

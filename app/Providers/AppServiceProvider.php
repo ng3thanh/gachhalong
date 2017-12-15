@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Meta;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
+use App\Models\News;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,8 +24,11 @@ class AppServiceProvider extends ServiceProvider
             ];
         });
         
+        $introduces = News::where('type', News::TYPE_INTRODUCE)->get();
+        
         View::share('meta', isset($meta) ? $meta->meta : 'ngthanh2093@gmail.com');
         View::share('menus', $menus);
+        View::share('introduces', $introduces);
     }
 
     /**

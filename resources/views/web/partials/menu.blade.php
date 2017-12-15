@@ -26,13 +26,9 @@
 									<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu multi-column multi-column-dropdown columns-12">
-									<li><a href="mens.html">Clothing</a></li>
-									<li><a href="mens.html">Wallets</a></li>
-									<li><a href="mens.html">Footwear</a></li>
-									<li><a href="mens.html">Watches</a></li>
-									<li><a href="mens.html">Accessories</a></li>
-									<li><a href="mens.html">Bags</a></li>
-									<li><a href="mens.html">Caps & Hats</a></li>
+									@foreach($introduces as $introduce)
+										<li><a href="{{ URL::route('introduce_detail', [$introduce->slug, $introduce->id]) }}">{{ $introduce->title }}</a></li>
+									@endforeach
 								</ul>
 							</li>
 							<li class="dropdown menu__item">

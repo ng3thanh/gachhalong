@@ -63,7 +63,7 @@
 			
 			<div class="men-wear-bottom">
 				<div class="col-sm-4 men-wear-left">
-					<img class="img-responsive" src="{{ asset('images/'. $menuNow->image) }}" alt=" " />
+					<img class="img-responsive" src="{{ asset('images/menus/'. $menuNow->image) }}" alt="{{ $menuNow->name }}" />
 				</div>
 				<div class="col-sm-8 men-wear-right">
 					<h4>{{ $menuNow->name }}</h4>
@@ -80,8 +80,8 @@
 			<div class="col-md-3 product-men yes-marg">
 				<div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item">
-						<img src="{{ asset('images/'. $product->image_name) }}" alt="" class="pro-image-front"> 
-						<img src="{{ asset('images/'. $product->image_name) }}" alt="" class="pro-image-back">
+						<img src="{{ asset('images/products/'. $product->image_name) }}" alt="" class="pro-image-front"> 
+						<img src="{{ asset('images/products/'. $product->image_name) }}" alt="" class="pro-image-back">
 						<div class="men-cart-pro">
 							<div class="inner-men-cart-pro">
 								<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>

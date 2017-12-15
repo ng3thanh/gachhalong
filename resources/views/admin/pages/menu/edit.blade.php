@@ -58,7 +58,7 @@
 									<label class="col-sm-3 control-label"> Ảnh chính </label>
 									
 									<div class="col-sm-9">
-										<img alt="{{ $data->name }}" width="100px" height="100px" src="{{ asset('upload/images/'. $data->image) }}">
+										<img alt="{{ $data->name }}" width="100px" height="100px" src="{{ asset('upload/images/menus/'. $data->image) }}">
 										<input type="text" value="{{ $data->image }}" hidden="hidden" name="menu_main_img_name">
 										<br><hr>
 										<input type="file" name="menu_main_img">

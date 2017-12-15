@@ -16,6 +16,7 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     
     Route::prefix('gioi-thieu')->group(function () {
         Route::get('/danh-sach', 'IntroduceController@index')->name('introduce');
+        Route::get('{slug}-{id}', 'IntroduceController@show')->name('introduce_detail');
     });
     
     Route::prefix('san-pham')->group(function () {

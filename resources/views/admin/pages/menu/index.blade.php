@@ -33,7 +33,7 @@
     									<span class="short-text" style="width: 200px;">{{ $menu->name }}</span>
     								</a>
     							</td>
-    							<td><img src="{{ asset('upload/images/'.$menu->image) }}" alt="{{ $menu->name }}" width="50px" height="50px"></td>
+    							<td><img src="{{ asset('upload/images/menus/'.$menu->image) }}" alt="{{ $menu->name }}" width="50px" height="50px"></td>
     							<td>
     								<span class="short-text" style="width: 300px;">{!! $menu->description !!}</span>
     							</td>

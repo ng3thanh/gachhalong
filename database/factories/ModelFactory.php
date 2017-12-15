@@ -16,8 +16,10 @@ use Faker\Generator as Faker;
  */
 
 $factory->define(Menu::class, function (Faker $faker) {
+    $name = $faker->unique()->name;
     return [
-        'name' => $faker->unique()->name,
+        'name' => $name,
+        'slug' => str_slug($name),
         'description' => $faker->realText(255, 3),
         'parent_id' => $faker->numberBetween(0,3),
     ];
@@ -25,10 +27,12 @@ $factory->define(Menu::class, function (Faker $faker) {
 
 $factory->define(Product::class, function (Faker $faker) {
     $start = $faker->dateTimeThisYear;
-    $end = $faker->dateTimeBetween($start, strtotime('+6 weeks'));
+    $end = $faker->dateTimeBetween($start, strtotime('+12 weeks'));
+    $name = $faker->unique()->name;
     
     return [
-        'name' => $faker->unique()->name,
+        'name' => $name,
+        'slug' => str_slug($name),
         'description' => $faker->paragraph,
         'star' => $faker->randomFloat(2, 0, 5),
         'vote' => $faker->numberBetween(1, 500),
