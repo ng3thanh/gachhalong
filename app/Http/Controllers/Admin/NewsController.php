@@ -80,12 +80,12 @@ class NewsController extends Controller
             DB::beginTransaction();
             
             $mainImage = $request->file('news_main_img');
-            $mainName = time() . $mainImage->getClientOriginalName();
+            $mainName = time().'_news_'.str_slug($request->news_title, '_').'.'.$mainImage->getClientOriginalExtension();
             $mainImage->move(public_path('upload/images/news'), $mainName);
             
             $news = new News();
             $news->title = $request->news_title;
-            $news->slug = str_slug($request->news_title);
+            $news->slug = str_slug($request->news_title, '_');
             $news->type = $request->news_menu;
             $news->image = $mainName;
             $news->description = $request->news_description;
@@ -145,7 +145,7 @@ class NewsController extends Controller
             
             $mainImage = $request->file('new_main_img');
             if (isset($mainImage)) {
-                $mainName = time() . $mainImage->getClientOriginalName();
+                $mainName = time().'_news_'.str_slug($request->news_title, '_').'.'.$mainImage->getClientOriginalExtension();
                 $mainImage->move(public_path('upload/images/news'), $mainName);
             } else {
                 $mainName = $request->new_main_img_name;
@@ -153,7 +153,7 @@ class NewsController extends Controller
             
             $news = News::findOrFail($id);
             $news->title = $request->news_title;
-            $news->slug = str_slug($request->news_title);
+            $news->slug = str_slug($request->news_title, '_');
             $news->type = $request->news_menu;
             $news->image = $mainName;
             $news->description = $request->news_description;

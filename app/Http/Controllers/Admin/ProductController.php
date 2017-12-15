@@ -113,7 +113,7 @@ class ProductController extends Controller
             $product = new Product();
             $product->menu_id = $request->menu;
             $product->name = $request->name;
-            $product->slug = str_slug($request->name);
+            $product->slug = str_slug($request->name, '_');
             $product->price = $request->price;
             $product->description = $request->description;
             $product->digital = $request->digital;
@@ -124,7 +124,7 @@ class ProductController extends Controller
             $product->save();
             
             $mainImage = $request->file('main-img');
-            $mainName = time().'_product_'.str_slug($request->name).'.'.$mainImage->getClientOriginalExtension();
+            $mainName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
             $mainImage->move(public_path('upload/images/products'), $mainName);
             $mainImageData = new Image();
             $mainImageData->product_id = $product->id;
@@ -136,7 +136,7 @@ class ProductController extends Controller
             $moreImages = $request->file('more-img');
             foreach ($moreImages as $key => $moreImage) {
 
-                $moreName = time().'_product_'.str_slug($request->name).'.'.$mainImage->getClientOriginalExtension();
+                $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                 $moreImage->move(public_path('upload/images/products'), $moreName);
                 $moreImageData = new Image();
                 $moreImageData->product_id = $product->id;
@@ -206,7 +206,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $product->menu_id = $request->menu;
             $product->name = $request->name;
-            $product->slug = str_slug($request->name);
+            $product->slug = str_slug($request->name, '_');
             $product->price = $request->price;
             $product->description = $request->description;
             $product->digital = $request->digital;
@@ -220,7 +220,7 @@ class ProductController extends Controller
             if ($mainImage) {
                 $deleteOld = Image::where('product_id', $id)->where('is_main_image', Image::IS_MAIN_IMAGE)->delete();
                 
-                $mainName = time().'_product_'.str_slug($request->name).'.'.$mainImage->getClientOriginalExtension();
+                $mainName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                 $mainImage->move(public_path('upload/images/products'), $mainName);
                 $mainImageData = new Image();
                 $mainImageData->product_id = $id;
@@ -234,7 +234,7 @@ class ProductController extends Controller
             if ($mainImage) {
                 foreach ($moreImages as $key => $moreImage) {
                     
-                    $moreName = time().'_product_'.str_slug($request->name).'.'.$mainImage->getClientOriginalExtension();
+                    $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                     $moreImage->move(public_path('upload/images/products'), $moreName);
                     $moreImageData = new Image();
                     $moreImageData->product_id = $id;
@@ -288,12 +288,12 @@ class ProductController extends Controller
             DB::beginTransaction();
             
             $mainImage = $request->file('menu_main_img');   
-            $mainName = time().'_menu_'.str_slug($request->menu_name).'.'.$mainImage->getClientOriginalExtension();
+            $mainName = time().'_menu_'.str_slug($request->menu_name, '_').'.'.$mainImage->getClientOriginalExtension();
             $mainImage->move(public_path('upload/images/menus'), $mainName);
             
             $menu = new Menu();
             $menu->name = $request->menu_name;
-            $menu->slug = str_slug($request->menu_name);
+            $menu->slug = str_slug($request->menu_name, '_');
             $menu->description = $request->menu_description;
             $menu->parent_id = $request->menu_menu;
             $menu->image = $mainName;
@@ -322,7 +322,7 @@ class ProductController extends Controller
             
             $mainImage = $request->file('menu_main_img');
             if (isset($mainImage)) {
-                $mainName = time().'_menu_'.str_slug($request->menu_name).'.'.$mainImage->getClientOriginalExtension();
+                $mainName = time().'_menu_'.str_slug($request->menu_name, '_').'.'.$mainImage->getClientOriginalExtension();
                 $mainImage->move(public_path('upload/images/menus'), $mainName);
             } else {
                 $mainName = $request->menu_main_img_name;
@@ -330,7 +330,7 @@ class ProductController extends Controller
             
             $menu = Menu::findOrFail($id);
             $menu->name = $request->menu_name;
-            $menu->slug = str_slug($request->menu_name);
+            $menu->slug = str_slug($request->menu_name, '_');
             $menu->description = $request->menu_description;
             $menu->parent_id = $request->menu_menu;
             $menu->image = $mainName;
