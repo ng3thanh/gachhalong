@@ -2,14 +2,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditNewsRequest;
 use App\Http\Requests\NewsRequest;
 use App\Models\News;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as RequestParameter;
 use Exception;
-use App\Http\Requests\EditNewsRequest;
 
 class NewsController extends Controller
 {
@@ -26,7 +25,7 @@ class NewsController extends Controller
         $title = RequestParameter::get('news_title', null);
         $select = RequestParameter::get('news_menu', null);
         $publishTime = RequestParameter::get('news_publish_time', null);
-
+        
         $query = News::orderBy('publish_start', 'desc');
         
         if (! empty($title)) {
@@ -146,7 +145,7 @@ class NewsController extends Controller
             
             $mainImage = $request->file('new_main_img');
             if (isset($mainImage)) {
-                $mainName = time().$mainImage->getClientOriginalName();
+                $mainName = time() . $mainImage->getClientOriginalName();
                 $mainImage->move(public_path('upload/images/news'), $mainName);
             } else {
                 $mainName = $request->new_main_img_name;
@@ -180,6 +179,6 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd(12);
     }
 }

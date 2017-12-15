@@ -2119,7 +2119,6 @@ border-bottom: 1px solid #e5e3db;
 }
 
 .css-treeview a{
-    background: url("../images/icons1.png") no-repeat 0px 9px !important;
     padding: 7px 0 0 31px;
     border-radius: 3px;
     margin: 2px;
@@ -2183,11 +2182,6 @@ border-bottom: 1px solid #e5e3db;
 	display: block;
 }
 
-.css-treeview label,
-.css-treeview label::before
-{
-	background:url("../images/icons1.png") no-repeat 0px 7px !important;
-}
 .css-treeview label,
 .css-treeview a,
 .css-treeview label::before

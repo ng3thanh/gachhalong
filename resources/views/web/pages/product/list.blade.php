@@ -17,19 +17,15 @@
 		<div class="col-md-4 products-left">
 			<div class="css-treeview">
 				<h4>Danh mục sản phẩm</h4>
-				<ul class="tree-list-pad">
+				<ul class="">
 					@foreach($parentMenu as $key => $groupMenu)
 					<li>
-    					<input type="checkbox" checked="checked" id="item-{{ $groupMenu->id }}" />
-    					<label for="item-{{ $key }}">
-    						<span></span>
-    						<a href="{{ URL::route('product', [$groupMenu->slug, $groupMenu->id]) }}">{{ $groupMenu->name }}</a></label>
+    					<a href="{{ URL::route('product', [$groupMenu->slug, $groupMenu->id]) }}">{{ $groupMenu->name }}</a>
 						<ul>
 							@foreach($menuProduct[$groupMenu->id] as $k => $menu)
     							@if($menu->id != $menu->parent_id)
     							<li>
-    								<input type="checkbox" id="item-{{ $groupMenu->id }}-{{ $k }}" />
-    								<label for="item-{{ $groupMenu->id }}-{{ $k }}">{{ $menu->name }}</label>
+    								<span>.</span><label for="item-{{ $groupMenu->id }}-{{ $k }}">{{ $menu->name }}</label>
     							</li>
     							@endif
 							@endforeach
@@ -71,7 +67,7 @@
 				</div>
 				<div class="col-sm-8 men-wear-right">
 					<h4>{{ $menuNow->name }}</h4>
-					<p>{{ $menuNow->description }}</p>
+					<p>{!! $menuNow->description !!}</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
