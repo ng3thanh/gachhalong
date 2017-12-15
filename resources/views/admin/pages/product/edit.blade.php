@@ -29,6 +29,7 @@
 				<div class="box-body">
 					<form role="form" id="create-new-product" class="form-horizontal" action="{{ URL::route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
 						{{ csrf_field() }}
+						{{ method_field('PATCH') }}
 						<!-- text input -->
 						<div>
 							<div class="col-xs-12">

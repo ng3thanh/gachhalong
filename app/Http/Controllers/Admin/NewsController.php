@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as RequestParameter;
 use Exception;
+use App\Http\Requests\EditNewsRequest;
 
 class NewsController extends Controller
 {
@@ -96,7 +97,7 @@ class NewsController extends Controller
             $news->save();
             
             DB::commit();
-            return Redirect::route('news.index')->with('success', 'Tạo mới menu thành công!');
+            return Redirect::route('news.index')->with('success', 'Tạo mới tin tức thành công!');
         } catch (Exception $e) {
             DB::rollBack();
             return Redirect::route('news.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: ' . $e->getMessage());
@@ -111,7 +112,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        return view('admin.pages.contact.detail');
+        //
     }
 
     /**
@@ -122,7 +123,13 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $new = News::findOrFail($id);
+        $type = config('news');
+        
+        return view('admin.pages.news.edit', [
+            'new' => $new,
+            'type' => $type
+        ]);
     }
 
     /**
@@ -132,9 +139,37 @@ class NewsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditNewsRequest $request, $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $mainImage = $request->file('new_main_img');
+            if (isset($mainImage)) {
+                $mainName = time().$mainImage->getClientOriginalName();
+                $mainImage->move(public_path('upload/images/news'), $mainName);
+            } else {
+                $mainName = $request->new_main_img_name;
+            }
+            
+            $news = News::findOrFail($id);
+            $news->title = $request->news_title;
+            $news->slug = str_slug($request->news_title);
+            $news->type = $request->news_menu;
+            $news->image = $mainName;
+            $news->description = $request->news_description;
+            $news->content = $request->news_content;
+            $news->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
+            $news->publish_end = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
+            // $news->tag = 'avc'
+            $news->save();
+            
+            DB::commit();
+            return Redirect::route('news.index')->with('success', 'Lưu tin tức thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return Redirect::route('news.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: ' . $e->getMessage());
+        }
     }
 
     /**
