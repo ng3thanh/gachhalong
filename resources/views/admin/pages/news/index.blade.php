@@ -20,80 +20,28 @@
 					<form role="form" class="form-horizontal" action="{{ URL::route('news.index') }}" method="get">
 						<!-- text input -->
 						<div>
-							<div class="col-xs-6">
+							<div class="col-xs-4">
         						<div class="form-group">
         							<label class="col-sm-3 control-label"> Tên bài viết</label> 
         							<div class="col-sm-9">
-        								<input type="text" name="name" class="form-control" placeholder="Tên sản phẩm ..." value="{{ Request::get('name') ? Request::get('name') : null }}">
-        							</div>
-        						</div>
-        						<div class="form-group">
-        							<label class="col-sm-3 control-label"> Trạng thái</label> 
-        							<div class="col-sm-9">
-        								<div class="col-sm-3">
-                                          	<div class="input-group">
-                                                <span class="input-group-addon">
-                                                  <input type="checkbox" name="status[]" value="1"
-                                                  @if(!empty(Request::get('status')))
-                                                      @if(in_array(1, Request::get('status')))
-                                                      		checked="checked"
-                                                      @endif
-                                                  @endif
-                                                  >
-                                                </span>
-                                            	<input type="text" style="background-color: #00a65a" class="form-control" disabled value="Đang hiện">
-                                          	</div>
-                                            <!-- /input-group -->
-                                        </div>
-                                        <div class="col-sm-3">
-                                          	<div class="input-group">
-                                                <span class="input-group-addon">
-                                                  <input type="checkbox" name="status[]" value="2"
-                                                  @if(!empty(Request::get('status')))
-                                                      @if(in_array(2, Request::get('status')))
-                                                      		checked="checked"
-                                                      @endif
-                                                  @endif
-                                                  >
-                                                </span>
-                                            	<input type="text" class="form-control" style="background-color: #00c0ef" disabled value="Chưa hiện">
-                                          	</div>
-                                            <!-- /input-group -->
-                                        </div>
-                                        <div class="col-sm-3">
-                                          	<div class="input-group">
-                                                <span class="input-group-addon">
-                                                  <input type="checkbox" name="status[]" value="3"
-                                                  @if(!empty(Request::get('status')))
-                                                      @if(in_array(3, Request::get('status')))
-                                                      		checked="checked"
-                                                      @endif
-                                                  @endif
-                                                  >
-                                                </span>
-                                            	<input type="text" class="form-control" style="background-color: #f39c12" disabled value="Không hiện">
-                                          	</div>
-                                            <!-- /input-group -->
-                                        </div>
-                                        <div class="col-sm-3">
-                                          	<div class="input-group">
-                                                <span class="input-group-addon">
-                                                  <input type="checkbox" name="status[]" value="4"
-                                                  @if(!empty(Request::get('status')))
-                                                      @if(in_array(4, Request::get('status')))
-                                                      		checked="checked"
-                                                      @endif
-                                                  @endif
-                                                  >
-                                                </span>
-                                            	<input type="text" class="form-control" style="background-color: #dd4b39" disabled value="Đã xóa">
-                                          	</div>
-                                            <!-- /input-group -->
-                                        </div>
+        								<input type="text" name="news_title" class="form-control" placeholder="Tiêu đề ..." value="{{ Request::get('name') ? Request::get('name') : null }}">
         							</div>
         						</div>
     						</div>
-    						<div class="col-xs-6">
+    						<div class="col-xs-4">
+    							<div class="form-group">
+        							<label class="col-sm-3 control-label"> Thể loại</label> 
+        							<div class="col-sm-9">
+        								<select class="form-control" name="news_menu" style="width: 100%;">
+        									<option value="">Tất cả</option>
+											@foreach($type as $key => $value)
+												<option value="{{ $key }}"> {{ $value }}</option>
+											@endforeach
+										</select>
+        							</div>
+        						</div>
+    						</div>
+    						<div class="col-xs-4">
         						<div class="form-group">
         							<label class="col-sm-3 control-label"> Thời gian đăng</label> 
         							<div class="col-sm-9">
@@ -101,20 +49,8 @@
                                           	<div class="input-group-addon">
                                             	<i class="fa fa-clock-o"></i>
                                           	</div>
-                                          	<input type="text" class="form-control pull-right" id="reservationtime" name="publish_time">
+                                          	<input type="text" class="form-control pull-right" id="reservationtime" name="news_publish_time">
                                         </div>
-        							</div>
-        						</div>
-        						<div class="form-group">
-        							<label class="col-sm-3 control-label"> Giá</label> 
-        							<div class="col-sm-9">
-        								<div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                            <input type="text" class="form-control" placeholder="Từ" name="start_price" disabled="disabled">
-                                            
-                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                            <input type="text" class="form-control"  placeholder="Đến" name="end_price" disabled="disabled">
-                                      	</div>
         							</div>
         						</div>
     						</div>
@@ -148,6 +84,7 @@
 						<tr class="header-table">
 							<th>ID</th>
 							<th>Tiêu đề</th>
+							<th>Thể loại</th>
 							<th>Mô tả ngắn</th>
 							<th>Ảnh</th>
 							<th>Ngày hiển thị</th>
@@ -163,6 +100,7 @@
 									<span class="short-text" style="width: 200px;">{{ $new->title }}</span>
 								</a>
 							</td>
+							<td>{{ strtoupper($new->type) }}</td>
 							<td>
 								<span class="short-text" style="width: 300px;">{!! $new->description !!}</span>
 							</td>

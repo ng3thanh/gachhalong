@@ -54,7 +54,7 @@ class ProductController extends Controller
         }
         
         if (! empty($name)) {
-            $query->where('name', $name); 
+            $query->where('name', 'like', "%$name%"); 
         }
         
         if (! empty($publishTime)) {

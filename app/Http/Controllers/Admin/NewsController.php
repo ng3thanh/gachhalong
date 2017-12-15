@@ -2,13 +2,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsRequest;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Exception;
 use Illuminate\Support\Facades\Request as RequestParameter;
-use App\Http\Requests\NewsRequest;
+use Exception;
 
 class NewsController extends Controller
 {
@@ -21,56 +21,36 @@ class NewsController extends Controller
     public function index()
     {
         $limit = News::LIMIT;
-        $name = RequestParameter::get('name', null);
-        $publishTime = RequestParameter::get('publish_time', null);
+        $type = config('news');
+        $title = RequestParameter::get('news_title', null);
+        $select = RequestParameter::get('news_menu', null);
+        $publishTime = RequestParameter::get('news_publish_time', null);
+
+        $query = News::orderBy('publish_start', 'desc');
         
-        $query = News::withTrashed()->where('type', News::TYPE_INTRODUCE);
+        if (! empty($title)) {
+            $query->where('title', 'like', "%$title%");
+        }
         
-        // if (! empty($status)) {
+        if (! empty($select)) {
+            $query->where('type', $select);
+        }
         
-        // if (! in_array(News::DELETED, $status)) {
-        // $query->where('status', '<>', News::DELETED);
-        // }
+        if (! empty($publishTime)) {
+            $startTime = date('Y-m-d 00:00:00', strtotime(substr($publishTime, 0, 10)));
+            $endTime = date('Y-m-d 23:59:59', strtotime(substr($publishTime, - 10)));
+            
+            $query->where('publish_start', '>=', $startTime)->where('publish_end', '<=', $endTime);
+        }
         
-        // if (! in_array(News::END_TIME, $status)) {
-        // $query->where('status', '<>', News::NOT_SHOW);
-        // }
-        
-        // if (! in_array(News::NOT_SHOW, $status)) {
-        // $query->where('status', '<>', News::NOT_SHOW);
-        // }
-        
-        // if (! in_array(News::SHOWING, $status)) {
-        // $query->where('status', '<>', News::SHOWING);
-        // }
-        // }
-        
-        // if (! empty($name)) {
-        // $query->where('name', $name);
-        // }
-        
-        // if (! empty($publishTime)) {
-        // $startTime = date('Y-m-d 00:00:00', strtotime(substr($publishTime, 0, 10)));
-        // $endTime = date('Y-m-d 23:59:59', strtotime(substr($publishTime, - 10)));
-        
-        // $query->where('publish_start', '>=', $startTime)->where('publish_end', '<=', $endTime);
-        // }
-        
-        // if (! empty($startPrice)) {
-        // $query->where('price', '>=', $startPrice);
-        // }
-        
-        // if (! empty($endPrice)) {
-        // $query->where('price', '<=', $endPrice);
-        // }
-        
-        $news = $query->orderBy('publish_start', 'desc')->paginate($limit);
+        $news = $query->paginate($limit);
         
         $number = (RequestParameter::get('page', '1') - 1) * $limit + 1;
         
         return view('admin.pages.news.index', [
             'news' => $news,
-            'number' => $number
+            'number' => $number,
+            'type' => $type
         ]);
     }
 
@@ -100,7 +80,7 @@ class NewsController extends Controller
             DB::beginTransaction();
             
             $mainImage = $request->file('news_main_img');
-            $mainName = time().$mainImage->getClientOriginalName();
+            $mainName = time() . $mainImage->getClientOriginalName();
             $mainImage->move(public_path('upload/images/news/'), $mainName);
             
             $news = new News();
@@ -112,14 +92,14 @@ class NewsController extends Controller
             $news->content = $request->news_content;
             $news->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
             $news->publish_end = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
-//             $news->tag = 'avc'
+            // $news->tag = 'avc'
             $news->save();
             
             DB::commit();
             return Redirect::route('news.index')->with('success', 'Tạo mới menu thành công!');
         } catch (Exception $e) {
             DB::rollBack();
-            return Redirect::route('news.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: '. $e->getMessage());
+            return Redirect::route('news.index')->with('error', 'Đã xảy ra lỗi khi thêm mới: ' . $e->getMessage());
         }
     }
 
