@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -44,9 +45,10 @@ class IntroduceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug, $id)
     {
-        //
+        $intro = News::where('id', $id)->where('type', News::TYPE_INTRODUCE)->first();
+        return view('web.pages.introduce.detail', compact('intro'));
     }
 
     /**
