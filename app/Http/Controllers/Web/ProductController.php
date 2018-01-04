@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request as HttpRequest;
 
 class ProductController extends Controller
 {
@@ -37,6 +38,7 @@ class ProductController extends Controller
                   ->orWhere('menus.parent_id', $menuId);
         })
         ->where('is_main_image', Image::IS_MAIN_IMAGE)
+        ->whereNotNull('images.deleted_at')
 //        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
 //        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
         ->paginate($paginate);
@@ -134,5 +136,30 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(HttpRequest $request)
+    {
+        $keyWord = $request->input('key_words');
+        $menu = $request->input('menu_keywords');
+
+        $query = Product::join('images', 'images.product_id', '=', 'products.id')
+        ->where('products.name','LIKE',"%$keyWord%")
+        ->where('images.is_main_image', Image::IS_MAIN_IMAGE)
+//        ->whereNotNull('products.deleted_at')
+        ->whereNotNull('images.deleted_at')
+        ->select(
+            'products.id',
+            'products.name',
+            'products.slug',
+            'images.name as image_name',
+            'images.alt'
+        );
+        if ($menu) {
+            $query->where('menu_id', $menu);
+        }
+        $products = $query->get();
+
+        return view('web.pages.product.search', compact('products'));
     }
 }

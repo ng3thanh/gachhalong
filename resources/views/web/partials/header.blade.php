@@ -29,13 +29,13 @@
 			</h1>
 		</div>
 		<div class="col-md-6 header-middle">
-			<form>
+			<form role="form" id="search-product" class="form-horizontal" action="{{ URL::route('search_product') }}" method="GET">
 				<div class="search">
-					<input type="search" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="required">
+					<input type="search" name="key_words" placeholder="Tìm kiếm">
 				</div>
 				<div class="section_room">
-					<select id="country" onchange="change_country(this.value)" class="frm-field required">
-						<option value="null">Tất cả</option>
+					<select id="country" class="frm-field required" name="menu_keywords">
+						<option value="">Tất cả</option>
 						@foreach($menus as $menu)
 							@foreach($menu as $k => $m)
 								<option value="{{ $m->id }}">{{ $m->name }}</option>

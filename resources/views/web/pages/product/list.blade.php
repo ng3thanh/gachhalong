@@ -10,9 +10,7 @@
 @section('content')
 <!-- banner -->
 <div class="page-head">
-	<div class="container">
-		<h3>Men's Wear</h3>
-	</div>
+	<div class="container"></div>
 </div>
 <!-- //banner -->
 <!-- mens -->

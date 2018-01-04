@@ -34,6 +34,7 @@ class MainController extends Controller
                 'images.name as image_name',
                 'images.alt')
             ->where('is_main_image', Image::IS_MAIN_IMAGE)
+            ->whereNotNull('images.deleted_at')
 //            ->where('publish_start', '<=',date('Y-m-d H:i:s'))
 //            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->get();

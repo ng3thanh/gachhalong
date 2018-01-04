@@ -20,6 +20,7 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     });
     
     Route::prefix('san-pham')->group(function () {
+        Route::get('/tim-kiem', 'ProductController@search')->name('search_product');
         Route::get('/danh-sach/{slug}-{menu_id}', 'ProductController@index')->name('product');
         Route::get('{slug}-{id}', 'ProductController@show')->name('product_detail');
     });
