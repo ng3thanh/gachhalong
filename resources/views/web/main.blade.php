@@ -35,8 +35,8 @@
 						<div class="col-md-3 product-men yes-marg">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="{{ asset('images/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-front"> 
-									<img src="{{ asset('images/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
+									<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-front">
+									<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>

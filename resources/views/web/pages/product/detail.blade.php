@@ -28,9 +28,9 @@
 					<!-- //FlexSlider-->
 					<ul class="slides">
 						@foreach($images as $image)
-						<li data-thumb="{{ asset('images/'.$image->name) }}">
+						<li data-thumb="{{ asset('upload/images/products/'.$image->name) }}">
 							<div class="thumb-image"> 
-								<img src="{{ asset('images/'.$image->name) }}" alt="{{ $image->alt }}" data-imagezoom="true" class="img-responsive"> 
+								<img src="{{ asset('upload/images/products/'.$image->name) }}" alt="{{ $image->alt }}" data-imagezoom="true" class="img-responsive">
 							</div>
 						</li>
 						@endforeach
@@ -62,7 +62,7 @@
 				</span>
 			</div>
 			<div class="description">
-				<h5>{{ $product->information }}</h5>
+				<h5>{!!  $product->information !!}</h5>
 			</div>
 		</div>
 		<div class="clearfix"> </div>
@@ -78,12 +78,12 @@
 				<div id="myTabContent" class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
 						<h5>Mô tả sản phẩm</h5>
-						<p>{{ $product->description }}</p>
+						<p>{!! $product->description !!}</p>
 					</div>
 					<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
 						<div class="bootstrap-tab-text-grids">
 							<div class="bootstrap-tab-text-grid">
-								<p>{{ $product->digital }}</p>
+								<p>{!! $product->digital !!}</p>
 								<div class="clearfix"> </div>
 							</div>
 						</div>

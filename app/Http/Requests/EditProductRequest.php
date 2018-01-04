@@ -24,14 +24,14 @@ class EditProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required|between:5,100|unique:products,name',
+            'name'          => 'required|between:5,100',
             'menu'          => 'required',
             'price'         => 'nullable|numeric',
             'description'   => 'required',
             'information'   => 'required',
             'digital'       => 'required',
-            'main-img'      => 'mimes:jpeg,bmp,png,jpg',
-            'more-img'      => 'mimes:jpeg,bmp,png,jpg',
+//            'main-img'      => 'mimes:jpeg,bmp,png,jpg',
+//            'more-img'      => 'mimes:jpeg,bmp,png,jpg',
             'publish_time'  => 'required|string',
             'status'        => 'required'
         ];

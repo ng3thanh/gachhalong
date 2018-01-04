@@ -37,8 +37,8 @@ class ProductController extends Controller
                   ->orWhere('menus.parent_id', $menuId);
         })
         ->where('is_main_image', Image::IS_MAIN_IMAGE)
-        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
-        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
+//        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
+//        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
         ->paginate($paginate);
 
         $menuData = Menu::all();

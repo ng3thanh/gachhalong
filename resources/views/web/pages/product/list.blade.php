@@ -1,7 +1,11 @@
 @extends('web.layout') 
 @section('title', 'Danh sách sản phẩm Gạch Hạ Long') 
-@section('css') @endsection 
-@section('js') @endsection
+@section('css')
+
+@endsection
+@section('js')
+
+@endsection
 
 @section('content')
 <!-- banner -->
@@ -14,29 +18,26 @@
 <!-- mens -->
 <div class="men-wear">
 	<div class="container">
-		<div class="col-md-4 products-left">
-			<div class="css-treeview">
-				<h4>Danh mục sản phẩm</h4>
-				<ul class="">
-					@foreach($parentMenu as $key => $groupMenu)
-					<li>
-    					<a href="{{ URL::route('product', [$groupMenu->slug, $groupMenu->id]) }}">{{ $groupMenu->name }}</a>
-						<ul>
-							@foreach($menuProduct[$groupMenu->id] as $k => $menu)
-    							@if($menu->id != $menu->parent_id)
-    							<li>
-    								<span>.</span><label for="item-{{ $groupMenu->id }}-{{ $k }}">{{ $menu->name }}</label>
-    							</li>
-    							@endif
-							@endforeach
-						</ul>
-					</li>
-					@endforeach
-				</ul>
-			</div>
-			<div class="clearfix"></div>
+		<div class="col-md-4">
+            <div class="css-treeview">
+                <h4>Danh mục</h4>
+                <ul class="tree-list-pad">
+                    @foreach($parentMenu as $key => $value)
+                    <li>
+                        <input type="checkbox" checked="checked" id="item-{{ $value->id }}" />
+                        <label for="item-{{ $value->id }}"><span></span>{{ $value->name }}</label>
+                        <ul>
+                            @foreach($menuProduct[$value->id] as $k => $menu)
+                                <li><a href="{{ URL::route('product', [$menu->slug, $menu->id]) }}">{{ $menu->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="clearfix"></div>
 		</div>
-		
+
 		<div class="col-md-8 products-right">
 			<div class="sort-grid">
 				<div class="sorting">
@@ -63,7 +64,7 @@
 			
 			<div class="men-wear-bottom">
 				<div class="col-sm-4 men-wear-left">
-					<img class="img-responsive" src="{{ asset('images/menus/'. $menuNow->image) }}" alt="{{ $menuNow->name }}" />
+					<img class="img-responsive" src="{{ asset('upload/images/menus/'. $menuNow->image) }}" alt="{{ $menuNow->name }}" />
 				</div>
 				<div class="col-sm-8 men-wear-right">
 					<h4>{{ $menuNow->name }}</h4>
@@ -80,8 +81,8 @@
 			<div class="col-md-3 product-men yes-marg">
 				<div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item">
-						<img src="{{ asset('images/products/'. $product->image_name) }}" alt="" class="pro-image-front"> 
-						<img src="{{ asset('images/products/'. $product->image_name) }}" alt="" class="pro-image-back">
+						<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="" class="pro-image-front">
+						<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="" class="pro-image-back">
 						<div class="men-cart-pro">
 							<div class="inner-men-cart-pro">
 								<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>

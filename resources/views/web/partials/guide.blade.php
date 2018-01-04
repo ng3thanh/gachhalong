@@ -5,22 +5,19 @@
 				<h3>Buy your product in a simple way</h3>
 			</div>
 			<div class="col-md-3 coupons-gd">
-				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-				<h4>LOGIN TO YOUR ACCOUNT</h4>
-				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-					consectetur.</p>
+				<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+				<h4>LỰA CHỌN SẢN PHẨM</h4>
+				<p>Lựa chọn các sản phẩm gạch uy tín.</p>
 			</div>
 			<div class="col-md-3 coupons-gd">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				<h4>SELECT YOUR ITEM</h4>
-				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-					consectetur.</p>
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+				<h4>GỌI ĐIỆN ĐẶT HÀNG</h4>
+				<p>Gọi điện đặt hàng.</p>
 			</div>
 			<div class="col-md-3 coupons-gd">
-				<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
-				<h4>MAKE PAYMENT</h4>
-				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-					consectetur.</p>
+				<span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+				<h4>GIAO HÀNG MIỄN PHÍ</h4>
+				<p>Giao hàng tận nơi đến các cơ sở.</p>
 			</div>
 			<div class="clearfix"></div>
 		</div>

@@ -298,7 +298,10 @@ class ProductController extends Controller
             $menu->parent_id = $request->menu_menu;
             $menu->image = $mainName;
             $menu->save();
-            
+
+            $request->menu_menu == 0 ? $menu->parent_id = $menu->id : $menu->parent_id = $menu->parent_id;
+            $menu->save();
+
             DB::commit();
             return Redirect::route('menu.index')->with('success', 'Tạo mới menu thành công!');
         } catch (\Exception $e) {
@@ -332,7 +335,7 @@ class ProductController extends Controller
             $menu->name = $request->menu_name;
             $menu->slug = str_slug($request->menu_name, '_');
             $menu->description = $request->menu_description;
-            $menu->parent_id = $request->menu_menu;
+            $menu->parent_id = $request->menu_menu == 0 ? $id : $request->menu_menu;
             $menu->image = $mainName;
             $menu->save();
             
