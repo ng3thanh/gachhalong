@@ -134,17 +134,19 @@ class ProductController extends Controller
             $mainImageData->save();
             
             $moreImages = $request->file('more-img');
-            foreach ($moreImages as $key => $moreImage) {
-
-                $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
-                $moreImage->move(public_path('upload/images/products'), $moreName);
-                $moreImageData = new Image();
-                $moreImageData->product_id = $product->id;
-                $moreImageData->name = $moreName;
-                $moreImageData->alt = $product->name;
-                $moreImageData->is_main_image = Image::IS_NOT_MAIN_IMAGE;
-                $moreImageData->save();
+            if($moreImages){
+                foreach ($moreImages as $key => $moreImage) {
+                    $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
+                    $moreImage->move(public_path('upload/images/products'), $moreName);
+                    $moreImageData = new Image();
+                    $moreImageData->product_id = $product->id;
+                    $moreImageData->name = $moreName;
+                    $moreImageData->alt = $product->name;
+                    $moreImageData->is_main_image = Image::IS_NOT_MAIN_IMAGE;
+                    $moreImageData->save();
+                }
             }
+
             
             DB::commit();
             return Redirect::route('product.index')->with('success', 'Tạo mới sản phẩm thành công!');

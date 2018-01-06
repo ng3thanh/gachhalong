@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
  * | contains the "web" middleware group. Now create something great!
  * |
  */
-Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(function () {
+Route::middleware('guest')->namespace('Web')->group(function () {
     Route::get('/', 'MainController@index')->name('main');
     
     Route::prefix('gioi-thieu')->group(function () {
@@ -27,6 +27,7 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
 
     Route::prefix('tai-lieu')->group(function () {
         Route::get('/danh-sach', 'DocumentController@index')->name('document');
+        Route::get('{slug}-{id}', 'DocumentController@show')->name('document_detail');
     });
     
     Route::prefix('lien-he')->group(function () {
@@ -34,15 +35,15 @@ Route::middleware('guest')->domain(env('APP_DOMAIN'))->namespace('Web')->group(f
     });
 });
 
-Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function () {
-    
-    Route::middleware('admin')->group(function () {
+Route::prefix('admin')->namespace('Admin')->group(function () {
+
+    Route::prefix('management')->middleware('admin')->group(function(){
         Route::get('/', 'DashBoardController@index')->name('dashboard');
-        
+
         Route::resource('product', 'ProductController');
         Route::resource('news', 'NewsController');
         Route::resource('contact', 'ContactController');
-        
+
         Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');
         Route::get('create-menu', 'ProductController@createMenu')->name('menu.create');
         Route::get('edit-menu/{id}', 'ProductController@editMenu')->name('menu.edit');
@@ -50,9 +51,7 @@ Route::domain('admin.' . env('APP_DOMAIN'))->namespace('Admin')->group(function 
         Route::post('edit-menu/{id}', 'ProductController@updateMenu')->name('menu.update');
         Route::post('delete-menu/{id}', 'ProductController@destroyMenu')->name('menu.destroy');
     });
-    
+
     Route::get('/login', 'LoginController@getLogin')->name('get_login');
     Route::post('/login', 'LoginController@postLogin')->name('post_login');
-    
 });
-

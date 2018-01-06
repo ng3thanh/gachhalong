@@ -66,51 +66,13 @@
 				<div class="col-md-4 sign-gd flickr-post">
 					<h4>Sản phẩm bán chạy</h4>
 					<ul>
+						@foreach($footerProduct as $product)
 						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
+							<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}">
+								<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="img-responsive" />
 							</a>
 						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b16.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b17.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b18.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b18.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b15.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b16.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
-						<li>
-							<a href="single.html">
-								<img src="{{ asset('images/b17.jpg') }}" alt=" " class="img-responsive" />
-							</a>
-						</li>
+						@endforeach
 					</ul>
 				</div>
 				<div class="clearfix"></div>

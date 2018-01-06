@@ -12,20 +12,34 @@
     <!-- Page Content -->
     <div class="container">
         <div class="col-sm-10 col-sm-offset-1">
-            <h4><small><span class="glyphicon glyphicon-time"></span> Post by Admin, Sep 27, 2015.</small></h4>
+            @foreach($documents as $document)
+                <div class="col col-md-12 row">
+                    <div class="col col-md-12 row">
+                        <h4>
+                            <small>
+                                <span class="glyphicon glyphicon-time"></span>
+                                Post by Admin, {{ date('l h:i:s', strtotime($document->created_at)) }}.
+                            </small>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="col col-md-12 row">
+                        <div class="col col-md-3 row text-center">
+                            <img width="100px" class="img-fluid rounded" src="{{ asset('/upload/images/news/'.$document->image) }}" alt="{{ $document->title }}">
+                        </div>
+                        <div class="col col-md-9 row">
+                            <h2><a href="{{ URL::route('document_detail', [$document->slug, $document->id]) }}">{{ $document->title }}</a></h2><br>
+                            <h5>
+                                <span class="label label-danger">Tin tức</span>
+                                <span class="label label-primary">Tài liệu</span></h5>
+                            <br>
+                            {!! $document->description !!}
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
             <hr>
-            <h2>I Love Food</h2><br>
-            <h5><span class="label label-danger">Tin tức</span> <span class="label label-primary">Tài liệu</span></h5><br>
-            <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <br><br>
-
-            <h4><small><span class="glyphicon glyphicon-time"></span> Post by Admin, Sep 24, 2015.</small></h4>
-            <hr>
-            <h2>Officially Blogging</h2><br>
-            <h5><span class="label label-success">Tài liệu</span></h5><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <hr>
-
         </div>
     </div>
     <!-- /.container -->

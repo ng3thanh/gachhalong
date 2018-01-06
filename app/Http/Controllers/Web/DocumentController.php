@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,8 @@ class DocumentController extends Controller
      */
     public function index()
     {
-
-        return view('web.pages.document.list');
+        $documents = News::where('type', News::TYPE_DOCUMENT)->get();
+        return view('web.pages.document.list', compact('documents'));
     }
 
     /**
@@ -45,9 +46,10 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug, $id)
     {
-        //
+        $intro = News::where('id', $id)->where('type', News::TYPE_DOCUMENT)->first();
+        return view('web.pages.introduce.detail', compact('intro'));
     }
 
     /**

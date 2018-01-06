@@ -19,18 +19,18 @@ class ProductController extends Controller
     public function index($slug, $menuId)
     {
         $paginate = Request::get('paginate', 10);
-        
+
         $menuNow = Menu::where('id', $menuId)->first();
 
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
         ->join('images', 'images.product_id', '=', 'products.id')
         ->select(
-            'products.id', 
+            'products.id',
             'products.name',
             'products.slug',
-            'menus.id as menu_id', 
-            'menus.parent_id as menu_parent_id', 
-            'images.name as image_name', 
+            'menus.id as menu_id',
+            'menus.parent_id as menu_parent_id',
+            'images.name as image_name',
             'images.alt'
         )
         ->where(function ($query) use ($menuId) {
@@ -38,21 +38,21 @@ class ProductController extends Controller
                   ->orWhere('menus.parent_id', $menuId);
         })
         ->where('is_main_image', Image::IS_MAIN_IMAGE)
-        ->whereNotNull('images.deleted_at')
+        ->whereNull('images.deleted_at')
 //        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
 //        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
         ->paginate($paginate);
 
         $menuData = Menu::all();
-        
+
         $parentMenu = Menu::whereColumn('parent_id', 'id')->get();
-        
+
         $menuProduct = $menuData->mapToGroups(function ($item, $key) {
             return [
                 $item['parent_id'] => $item
             ];
         });
-        
+
         return view('web.pages.product.list', [
             'parentMenu' => $parentMenu,
             'menuProduct' => $menuProduct,
@@ -92,8 +92,8 @@ class ProductController extends Controller
     {
 
         $product = Product::join('menus', 'menus.id', '=', 'products.menu_id')->select('products.id', 'products.name', 'products.price', 'products.description', 'products.star', 'products.digital', 'products.information', 'menus.name AS menu_name')
-            ->where('publish_start', '<=', date('Y-m-d H:i:s'))
-            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
+//            ->where('publish_start', '<=', date('Y-m-d H:i:s'))
+//            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->findOrFail($id);
 
         $images = Image::where('product_id', $id)->get();
