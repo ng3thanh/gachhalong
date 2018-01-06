@@ -8,11 +8,6 @@
 @endsection
 
 @section('content')
-<!-- banner -->
-<div class="page-head">
-	<div class="container"></div>
-</div>
-<!-- //banner -->
 <!-- mens -->
 <div class="men-wear">
 	<div class="container">

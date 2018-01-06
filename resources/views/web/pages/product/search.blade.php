@@ -11,7 +11,7 @@
 <!-- banner -->
 <div class="page-head">
 	<div class="container">
-		<h3>Men's Wear</h3>
+
 	</div>
 </div>
 <!-- //banner -->

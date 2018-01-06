@@ -5,9 +5,7 @@
 			<h2>
 				<a href="{{ URL::route('main') }}"><img src="{{ asset('images/logo3.jpg') }}" alt=" " /></a>
 			</h2>
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-				consectetur, adipisci velit, sed quia non numquam eius modi tempora
-				incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+			<p>Công ty TND là nhà phân phối chính thức các sản phẩm GẠCH NGÓI HẠ LONG: gạch lát Hạ Long, gạch gốm Hạ Long, gạch lát nền Hạ Long, hoặc gạch lát sân Hạ Long, gạch thẻ cotto, ngói lợp Hạ Long.</p>
 		</div>
 		<div class="col-md-9 footer-right">
 			<div class="col-sm-6 newsleft">
@@ -53,17 +51,15 @@
 					<ul>
 						<li>
 							<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
-							Address: 1234k Avenue, 4th block, 
-							<span>Newyork City.</span>
+							Chợ Cháy - Chẩn Kỳ - Trung Tú - Ứng Hoà - Hà Nội
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-							Email: 
-							<a href="mailto:info@example.com">info@example.com</a>
+							<a href="mailto:tandinhphat2018@gmail.com">tandinhphat2018@gmail.com</a>
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
-							Phone: +1234 567 567
+							092.812.0298
 						</li>
 					</ul>
 				</div>
@@ -122,7 +118,7 @@
 		</div>
 		<div class="clearfix"></div>
 		<p class="copy-right">
-			&copy 2017 Smart Shop. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a>
+			&copy 2018 Gạch Hạ Long. All rights reserved | Design by <a href="http://ngthanh2093.com/">ng3thanh</a>
 		</p>
 	</div>
 </div>
