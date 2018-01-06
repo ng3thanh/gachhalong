@@ -7,7 +7,7 @@
 <div class="product-easy">
 	<div class="container">
 
-		<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+		<script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
 		<script type="text/javascript">
     							$(document).ready(function () {
     								$('#horizontalTab').easyResponsiveTabs({
