@@ -38,7 +38,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
 Route::prefix('admin')->namespace('Admin')->group(function () {
 
     Route::prefix('management')->middleware('admin')->group(function(){
-        Route::get('/', 'DashBoardController@index')->name('dashboard');
+        Route::get('/', 'DashController@index')->name('dashboard');
 
         Route::resource('product', 'ProductController');
         Route::resource('news', 'NewsController');
