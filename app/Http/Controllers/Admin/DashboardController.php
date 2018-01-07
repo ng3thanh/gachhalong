@@ -6,15 +6,6 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-
-    protected $coinRepository;
-
-    protected $coinsExchangeRepository;
-
-    public function __construct()
-    {
-    }
-
     /**
      * Display a listing of the resource.
      *

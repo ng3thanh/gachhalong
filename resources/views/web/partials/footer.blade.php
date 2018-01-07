@@ -5,7 +5,7 @@
 			<h2>
 				<a href="{{ URL::route('main') }}"><img src="{{ asset('images/logo3.jpg') }}" alt=" " /></a>
 			</h2>
-			<p>Công ty TND là nhà phân phối chính thức các sản phẩm GẠCH NGÓI HẠ LONG: gạch lát Hạ Long, gạch gốm Hạ Long, gạch lát nền Hạ Long, hoặc gạch lát sân Hạ Long, gạch thẻ cotto, ngói lợp Hạ Long.</p>
+			<p>Công ty Tân Định Phát là nhà phân phối chính thức các sản phẩm GẠCH NGÓI HẠ LONG: gạch lát Hạ Long, gạch gốm Hạ Long, gạch lát nền Hạ Long, hoặc gạch lát sân Hạ Long, gạch thẻ cotto, ngói lợp Hạ Long.</p>
 		</div>
 		<div class="col-md-9 footer-right">
 			<div class="col-sm-6 newsleft">

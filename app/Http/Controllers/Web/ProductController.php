@@ -146,8 +146,8 @@ class ProductController extends Controller
         $query = Product::join('images', 'images.product_id', '=', 'products.id')
         ->where('products.name','LIKE',"%$keyWord%")
         ->where('images.is_main_image', Image::IS_MAIN_IMAGE)
-//        ->whereNotNull('products.deleted_at')
-        ->whereNotNull('images.deleted_at')
+        ->whereNull('products.deleted_at')
+        ->whereNull('images.deleted_at')
         ->select(
             'products.id',
             'products.name',

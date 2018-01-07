@@ -35,7 +35,7 @@
 			<li class="header">DANH MỤC</li>
 			
 			<li class="active treeview">
-    			<a href="{{ URL::route('main') }}"> 
+    			<a href="{{ URL::route('dashboard') }}">
     				<i class="fa fa-dashboard"></i>
     				<span> Trang quản lý</span>
     			</a>

@@ -85,7 +85,7 @@
 									<div class="col-sm-9">
 										@foreach($images as $image)
     										@if($image->is_main_image == 1)
-    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/'. $image->name) }}">
+    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/products/'. $image->name) }}">
     										@endif
 										@endforeach
 										<br>
@@ -98,7 +98,7 @@
 									<div class="col-sm-9">
 										@foreach($images as $image)
     										@if($image->is_main_image == 0)
-    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/'. $image->name) }}">
+    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/products/'. $image->name) }}">
     										@endif
 										@endforeach
 										<br>

@@ -31,7 +31,7 @@
 
                 <!-- Preview Image -->
                 <div class="text-center">
-                    <img class="img-fluid rounded" src="{{ asset('/upload/images/news/'.$intro->image) }}" alt="{{ $intro->title }}">
+                    <img class="img-fluid rounded" src="{{ asset('/upload/images/news/'.$intro->image) }}" alt="{{ $intro->title }}" width="500px">
                 </div>
 
                 <hr>
