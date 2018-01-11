@@ -29,6 +29,7 @@ class MainController extends Controller
                 'products.id', 
                 'products.name', 
                 'products.slug',
+                'products.publish_start',
                 'menus.id as menu_id', 
                 'menus.parent_id as menu_parent_id',
                 'images.name as image_name',

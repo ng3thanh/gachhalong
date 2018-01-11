@@ -9,15 +9,15 @@
 
 		<script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
 		<script type="text/javascript">
-    							$(document).ready(function () {
-    								$('#horizontalTab').easyResponsiveTabs({
-    									type: 'default', //Types: default, vertical, accordion           
-    									width: 'auto', //auto or any width like 600px
-    									fit: true   // 100% fit in a container
-    								});
-    							});
+			$(document).ready(function () {
+				$('#horizontalTab').easyResponsiveTabs({
+					type: 'default', //Types: default, vertical, accordion
+					width: 'auto', //auto or any width like 600px
+					fit: true   // 100% fit in a container
+				});
+			});
     							
-    		</script>
+		</script>
 		<div class="sap_tabs">
 			<div id="horizontalTab"
 				style="display: block; width: 100%; margin: 0px;">
@@ -35,15 +35,17 @@
 						<div class="col-md-3 product-men yes-marg">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-front">
-									<img src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
+									<img height="220px" width="220px" src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-front">
+									<img height="220px" width="220px" src="{{ asset('upload/images/products/'. $product->image_name) }}" alt="{{ $product->alt }}" class="pro-image-back">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">Quick View</a>
+											<a href="{{ URL::route('product_detail', [$product->slug, $product->id]) }}" class="link-product-add-cart">CHI TIẾT</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
 
+									@if(strtotime($product->publish_start) > strtotime('-1 month'))
+										<span class="product-new-top">New</span>
+									@endif
 								</div>
 								<div class="item-info-product ">
 									<h4>

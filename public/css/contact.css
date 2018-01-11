@@ -1,0 +1,30 @@
+#contact-section {
+    margin-top: 40px;
+}
+
+#contact-section h4 {
+    margin: 10px 0px 20px 0px;
+    font-weight: 500;
+    color: #BC2C2B;
+}
+
+#contact-section #contact-button {
+    background-color: #BC2C2B;
+    color: #FFFFFF;
+}
+
+#contact-section #contact-info div{
+    margin-top: 5px;
+}
+
+#contact-section #contact-info #label{
+    font-weight: 700;
+    font-size: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#contact-section #contact-info #content{
+    font-weight: 300;
+    font-size: 14px;
+}

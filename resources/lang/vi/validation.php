@@ -136,7 +136,9 @@ return [
         'news_description'  => 'mô tả',
         'news_content'      => 'nội dung',
         'news_main_img'     => 'ảnh tin tức',
-        'news_publish_time' => 'thời gian đăng bài'
+        'news_publish_time' => 'thời gian đăng bài',
+        'phone'             => 'số điện thoại',
+        'content'           => 'nội dung'
     ],
 
 ];

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FeedbackRequest;
+use App\Models\Feedback;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ContactController extends Controller
 {
@@ -18,68 +22,28 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Action feedback.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function feedback(FeedbackRequest $request)
     {
-        //
-    }
+        $dataFeedback = $request->all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        DB::beginTransaction();
+        try {
+            $feedback = new Feedback();
+            $feedback->name = $dataFeedback['name'];
+            $feedback->mail = $dataFeedback['email'];
+            $feedback->phone = $dataFeedback['phone'];
+            $feedback->content = $dataFeedback['content'];
+            $feedback->save();
+            DB::commit();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            return Redirect::back();
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

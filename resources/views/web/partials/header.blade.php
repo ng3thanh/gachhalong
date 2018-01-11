@@ -52,7 +52,7 @@
 		<div class="col-md-3 header-right footer-bottom">
 			<ul>
 				<li>
-					<a href="#" class="use1" data-toggle="modal" data-target="#myModal4">
+					<a href="{{ URL::route('get_login') }}" class="use1">
 						<span>Login</span>
 					</a>
 				</li>

@@ -7,13 +7,10 @@
 </head>
 
 <body>
-	<!--Google Font - Work Sans-->
-	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
-
 	<div class="container">
 		<div class="profile">
 			<button class="profile__avatar" id="toggleProfile">
-				<img src="https://pbs.twimg.com/profile_images/554631714970955776/uzPxPPtr.jpeg" alt="Avatar" />
+				<img src="{{ asset('images/logo.jpg') }}" alt="Avatar" />
 			</button>
 			<form action="{{ URL::route('post_login') }}" method="POST">
 				{{ csrf_field() }}

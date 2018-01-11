@@ -32,6 +32,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
     
     Route::prefix('lien-he')->group(function () {
         Route::get('/danh-sach', 'ContactController@index')->name('contact');
+        Route::post('/gui-phan-hoi', 'ContactController@feedback')->name('feedback');
     });
 });
 
