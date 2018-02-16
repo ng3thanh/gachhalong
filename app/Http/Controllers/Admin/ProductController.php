@@ -158,7 +158,7 @@ class ProductController extends Controller
             $moreImages = $request->file('more-img');
             if($moreImages){
                 foreach ($moreImages as $key => $moreImage) {
-                    $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
+                    $moreName = time().$key.'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                     $moreImage->move(public_path('upload/images/products'), $moreName);
                     $moreImageData = new Image();
                     $moreImageData->product_id = $product->id;
@@ -242,7 +242,7 @@ class ProductController extends Controller
             
             $mainImage = $request->file('main-img');
             if ($mainImage) {
-                $deleteOld = Image::where('product_id', $id)->where('is_main_image', Image::IS_MAIN_IMAGE)->delete();
+                Image::where('product_id', $id)->where('is_main_image', Image::IS_MAIN_IMAGE)->delete();
                 
                 $mainName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                 $mainImage->move(public_path('upload/images/products'), $mainName);
@@ -257,8 +257,8 @@ class ProductController extends Controller
             $moreImages = $request->file('more-img');
             if ($mainImage) {
                 foreach ($moreImages as $key => $moreImage) {
-                    
-                    $moreName = time().'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
+                    Image::where('product_id', $id)->where('is_main_image', Image::IS_NOT_MAIN_IMAGE)->delete();
+                    $moreName = time().$key.'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();
                     $moreImage->move(public_path('upload/images/products'), $moreName);
                     $moreImageData = new Image();
                     $moreImageData->product_id = $id;
@@ -285,7 +285,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $product = Product::find($id);
+            $delete = $product->delete();
+            DB::commit();
+            return Redirect::route('product.index')->with('success', 'Xóa sản phẩm thành công!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::route('product.index')->with('error', 'Đã xảy ra lỗi khi xóa sản phẩm: '. $e->getMessage());
+        }
     }
     
     public function listMenu()

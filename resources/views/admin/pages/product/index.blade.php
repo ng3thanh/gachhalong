@@ -184,7 +184,13 @@
 							<td>
 								<a href="{{ URL::route('product.copy', $product->id) }}" class="btn btn-block btn-success btn-xs">Copy</a>
 								<a href="{{ URL::route('product.edit', $product->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
-								<a href="{{ URL::route('product.destroy', $product->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
+								<form role="form" id="create-new-product" class="form-horizontal" style="margin-top: 5px"
+									  action="{{ URL::route('product.destroy', $product->id) }}" method="POST"
+									  enctype="multipart/form-data">
+									{{ csrf_field() }}
+									{{ method_field('delete') }}
+									<button type="submit" class="btn btn-block btn-danger btn-xs">Xóa</button>
+								</form>
 							</td>
 						</tr>
 						@endforeach

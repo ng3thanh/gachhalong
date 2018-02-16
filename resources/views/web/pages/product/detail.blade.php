@@ -55,7 +55,7 @@
 			</div>
 			<hr>
 			<div class="description">
-				<h5>{!!  $product->information !!}</h5>
+				<p>{!! $product->description !!}</p>
 			</div>
 			<div class="clearfix"> </div>
 
@@ -69,15 +69,11 @@
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
-							<p>{!! $product->description !!}</p>
+							<p>{!!  $product->information !!}</p>
 						</div>
 						<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
-							<div class="bootstrap-tab-text-grids">
-								<div class="bootstrap-tab-text-grid">
-									<p>{!! $product->digital !!}</p>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
+							<p>{!! $product->digital !!}</p>
+							<div class="clearfix"> </div>
 						</div>
 					</div>
 				</div>
