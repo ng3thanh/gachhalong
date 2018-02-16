@@ -1,0 +1,63 @@
+.document .title h2 a {
+    color: #953b39;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px !important;
+    line-height: 32px;
+}
+
+.document .publisher h4 small {
+    color: #7c795d;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px !important;
+    line-height: 24px;
+    margin: 0 0 24px;
+    text-align: justify;
+}
+
+.document #hr-tag-end {
+    margin: 20px 0px 20px 0px;
+}
+
+.document #hr-tag {
+    margin-top: 10px;
+}
+
+.document .tag h5 {
+    margin: 0px 0px 0px 10px;
+}
+
+.document .doc-description {
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 26px;
+    margin: 0;
+}
+
+.new-detail {
+    padding: 30px;
+}
+.new-detail .title h1 {
+    color: #953b39;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 10px;
+}
+
+.new-detail .publisher {
+    color: #7c795d;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 0 0 10px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.new-detail .content {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    line-height: 32px;
+    margin: 0 0 12px;
+}

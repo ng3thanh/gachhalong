@@ -1,0 +1,72 @@
+.product-image {
+    visibility: visible;
+    animation-delay: 0.5s;
+    animation-name: slideInUp;
+}
+
+.product-detail {
+    visibility: visible;
+    animation-delay: 0.5s;
+    animation-name: slideInRight;
+}
+
+.product-show {
+    visibility: visible;
+    animation-delay: 0.5s;
+    animation-name: slideInUp;
+}
+
+.product-detail .product-price {
+    color: #7c795d;
+}
+
+.product-detail .product-price .span-price {
+    font-family: 'Enriqueta', arial, serif;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.product-detail .product-price .item-price {
+    color: #7c795d;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 15px;
+}
+
+.product-detail .rating {
+    margin: 10px 0 0 0;
+}
+
+.other-product .span-other-product {
+    padding: 15px;
+    background-color: #BC2C2B;
+}
+
+.other-product .span-other-product span {
+    font-family: 'Bitter', serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 0 0 5px;
+    color: #FFFFFF;
+}
+
+.span-product {
+    padding: 15px;
+    background-color: #BC2C2B;
+    margin-bottom: 30px;
+}
+
+.span-product span {
+    font-family: 'Bitter', serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 0 0 5px;
+    color: #FFFFFF;
+}

@@ -9,9 +9,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     color: #BC2C2B;
 }
 html, body{
+    color: #4c4a37;
+    font-family: 'Raleway',sans-serif;
+    font-size: 100%;
+    line-height: 25px;
 	margin:0;
-	font-size: 100%;
-	font-family: 'Roboto', sans-serif;
 	background: #fff;
 }
 body a {
@@ -844,6 +846,26 @@ position:relative;
 }
 .wed-brand p i {
     text-decoration: line-through;
+}
+
+.count-access {
+    font-size: 12px;
+    color: #FFFFFF;
+    position: fixed;
+    z-index: 100;
+    top: 75%;
+    border: thin solid #BC2C2B;
+    background-color: #953b39;
+    padding: 10px 10px 5px 10px;
+}
+
+.count-access div {
+    margin-bottom: 5px;
+}
+.count-access i {
+    padding-right: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 .wed-brand p {
     font-size: 21px;
@@ -2403,13 +2425,16 @@ background:#BC2C2B;
 /*-- //men-wear --*/
 /*-- single-page --*/
 .single {
-    padding: 90px 0;
+    padding: 35px 0;
 }
 .single-right-left h3 {
-    text-transform: capitalize;
-    font-size: 24px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0 0 20px;
     color: #BC2C2B;
-    margin: 0;
 }
 .single-right-left p{
     color: #000;
