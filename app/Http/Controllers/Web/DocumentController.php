@@ -15,7 +15,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = News::where('type', News::TYPE_DOCUMENT)->get();
+        $documents = News::where('type', News::TYPE_DOCUMENT)->paginate(10);
         return view('web.pages.document.list', compact('documents'));
     }
 

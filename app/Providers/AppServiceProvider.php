@@ -41,10 +41,25 @@ class AppServiceProvider extends ServiceProvider
         ->limit(9)
         ->get();
 
+        $day = date('d', strtotime("now"));
+        $month = 6324*(30-$day)/30;
+        $hour = date('H', strtotime("now"));
+        $min = date('i', strtotime("now"));
+        $today = ($month/30)*($hour/24) + $min*($month/(30*24*60));
+        $diffMonth = 12*(date('Y', strtotime("now")) - 2018) + date('m', strtotime("now")) - 1;
+        $total = 5743*$diffMonth + $month;
+
+        $visitor = [
+            'now' => rand(1,3),
+            'today' => number_format($today),
+            'month' => number_format($month),
+            'total' => number_format($total)
+        ];
         View::share('meta', isset($meta) ? $meta->meta : 'ngthanh2093@gmail.com');
         View::share('menus', $menus);
         View::share('introduces', $introduces);
         View::share('footerProduct', $footerProduct);
+        View::share('visitor', $visitor);
     }
 
     /**

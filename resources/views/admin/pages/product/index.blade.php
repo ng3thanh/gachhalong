@@ -182,6 +182,7 @@
     							@endif
 							</td>
 							<td>
+								<a href="{{ URL::route('product.copy', $product->id) }}" class="btn btn-block btn-success btn-xs">Copy</a>
 								<a href="{{ URL::route('product.edit', $product->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>
 								<a href="{{ URL::route('product.destroy', $product->id) }}" class="btn btn-block btn-danger btn-xs">Xóa</a>
 							</td>

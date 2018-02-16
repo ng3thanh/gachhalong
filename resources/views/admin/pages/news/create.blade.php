@@ -37,7 +37,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Tiêu đề</label>
 									<div class="col-sm-9">
-										<input type="text" name="news_title" class="form-control" placeholder="Tiêu đề ..." value="{{ old('name') }}">
+										<input type="text" name="news_title" class="form-control" placeholder="Tiêu đề ..." value="{{ old('news_title') }}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -54,13 +54,13 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Mô tả</label>
 									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter" name="news_description" rows="10" cols="80"></textarea>
+										<textarea id="new-description" name="news_description" rows="10" cols="80">{{ old('news_description') }}</textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Nội dung</label>
 									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter1" name="news_content" rows="10" cols="80"></textarea>
+										<textarea id="new-content" name="news_content" rows="10" cols="80">{{ old('news_content') }}</textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -76,7 +76,7 @@
 											<div class="input-group-addon">
 												<i class="fa fa-clock-o"></i>
 											</div>
-											<input type="text" class="form-control pull-right" id="reservationtime" name="news_publish_time">
+											<input type="text" class="form-control pull-right" value="{{ old('news_publish_time') }}" id="reservationtime" name="news_publish_time">
 										</div>
 									</div>
 								</div>
@@ -117,9 +117,20 @@
 <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
 <script>
   	$(function () {
-  	  	// CKEditer
-  	  	CKEDITOR.replace('ckediter');
-  	  	CKEDITOR.replace('ckediter1');
+  	  	// new-description
+  	  	CKEDITOR.replace('new-description', {
+            toolbarCanCollapse: true,
+            toolbarStartupExpanded: false,
+            rows: 3,
+        });
+  	  	CKEDITOR.replace('new-content', {
+            filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+			filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+			filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+			filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+			filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+			filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
         //Initialize Select2 Elements
         $('.select2').select2();
         //Date range picker with time picker

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
@@ -23,25 +24,25 @@ class ProductController extends Controller
         $menuNow = Menu::where('id', $menuId)->first();
 
         $products = Product::join('menus', 'menus.id', '=', 'products.menu_id')
-        ->join('images', 'images.product_id', '=', 'products.id')
-        ->select(
-            'products.id',
-            'products.name',
-            'products.slug',
-            'menus.id as menu_id',
-            'menus.parent_id as menu_parent_id',
-            'images.name as image_name',
-            'images.alt'
-        )
-        ->where(function ($query) use ($menuId) {
-            $query->where('menus.id', $menuId)
-                  ->orWhere('menus.parent_id', $menuId);
-        })
-        ->where('is_main_image', Image::IS_MAIN_IMAGE)
-        ->whereNull('images.deleted_at')
+            ->join('images', 'images.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.slug',
+                'menus.id as menu_id',
+                'menus.parent_id as menu_parent_id',
+                'images.name as image_name',
+                'images.alt'
+            )
+            ->where(function ($query) use ($menuId) {
+                $query->where('menus.id', $menuId)
+                    ->orWhere('menus.parent_id', $menuId);
+            })
+            ->where('is_main_image', Image::IS_MAIN_IMAGE)
+            ->whereNull('images.deleted_at')
 //        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
 //        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
-        ->paginate($paginate);
+            ->paginate($paginate);
 
         $menuData = Menu::all();
 
@@ -91,16 +92,42 @@ class ProductController extends Controller
     public function show($slug, $id)
     {
 
-        $product = Product::join('menus', 'menus.id', '=', 'products.menu_id')->select('products.id', 'products.name', 'products.price', 'products.description', 'products.star', 'products.digital', 'products.information', 'menus.name AS menu_name')
+        $product = Product::join('menus', 'menus.id', '=', 'products.menu_id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.menu_id',
+                'products.price',
+                'products.description',
+                'products.star',
+                'products.digital',
+                'products.information',
+                'menus.name AS menu_name')
 //            ->where('publish_start', '<=', date('Y-m-d H:i:s'))
 //            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->findOrFail($id);
 
         $images = Image::where('product_id', $id)->get();
-
+        $others = Product::join('menus', 'menus.id', '=', 'products.menu_id')
+            ->join('images', 'images.product_id', '=', 'products.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.slug',
+                'menus.id as menu_id',
+                'menus.parent_id as menu_parent_id',
+                'images.name as image_name',
+                'images.alt'
+            )
+            ->where('menus.id', $product->menu_id)
+            ->where('is_main_image', Image::IS_MAIN_IMAGE)
+            ->whereNull('images.deleted_at')
+            ->take(4)
+            ->get();
         return view('web.pages.product.detail', [
             'product' => $product,
-            'images' => $images
+            'images' => $images,
+            'others' => $others
         ]);
     }
 
@@ -144,17 +171,17 @@ class ProductController extends Controller
         $menu = $request->input('menu_keywords');
 
         $query = Product::join('images', 'images.product_id', '=', 'products.id')
-        ->where('products.name','LIKE',"%$keyWord%")
-        ->where('images.is_main_image', Image::IS_MAIN_IMAGE)
-        ->whereNull('products.deleted_at')
-        ->whereNull('images.deleted_at')
-        ->select(
-            'products.id',
-            'products.name',
-            'products.slug',
-            'images.name as image_name',
-            'images.alt'
-        );
+            ->where('products.name', 'LIKE', "%$keyWord%")
+            ->where('images.is_main_image', Image::IS_MAIN_IMAGE)
+            ->whereNull('products.deleted_at')
+            ->whereNull('images.deleted_at')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.slug',
+                'images.name as image_name',
+                'images.alt'
+            );
         if ($menu) {
             $query->where('menu_id', $menu);
         }

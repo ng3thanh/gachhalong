@@ -55,13 +55,13 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Mô tả</label>
 									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter" name="news_description" rows="10" cols="80">{{ $new->description }}</textarea>
+										<textarea id="new-description" name="news_description" rows="10" cols="80">{{ $new->description }}</textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Nội dung</label>
 									<div class="col-sm-9 box-body pad">
-										<textarea id="ckediter1" name="news_content" rows="10" cols="80">{{ $new->content }}</textarea>
+										<textarea id="new-content" name="news_content" rows="10" cols="80">{{ $new->content }}</textarea>
 									</div>
 								</div>
 								
@@ -124,8 +124,19 @@
 <script>
   	$(function () {
   	  	// CKEditer
-  	  	CKEDITOR.replace('ckediter');
-  	  	CKEDITOR.replace('ckediter1');
+        CKEDITOR.replace('new-description', {
+            toolbarCanCollapse: true,
+            toolbarStartupExpanded: false,
+            rows: 3,
+        });
+        CKEDITOR.replace('new-content', {
+            filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
         //Initialize Select2 Elements
         $('#reservationtime').val($('#hidden-date').val());
         //Date range picker with time picker

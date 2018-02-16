@@ -149,8 +149,7 @@
 						<!-- /.row -->
 					</form>
 
-					<div class="box-footer col-xs-12"
-						style="margin-top: 20px; padding-top: 20px">
+					<div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
 						<div class="col-xs-8 col-xs-offset-2">
 							<div class="col-xs-3">
 								<button class="btn btn-block btn-default"

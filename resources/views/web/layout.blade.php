@@ -15,6 +15,24 @@
     <body>
     	@include('web.partials.header')
     	@include('web.partials.menu')
+		<div class="count-access">
+			<div>
+				<i class="fa fa-bolt"></i>
+				<span>&nbsp;&nbsp;&nbsp;Truy cập hiện tại: {{ $visitor['now'] }}</span>
+			</div>
+			<div>
+				<i class="fa fa-hourglass-start"></i>
+				<span>&nbsp; Truy cập hôm nay: {{ $visitor['today'] }}</span>
+			</div>
+			<div>
+				<i class="fa fa-calendar"></i>
+				<span>&nbsp; Truy cập tháng: {{ $visitor['month'] }}</span>
+			</div>
+			<div>
+				<i class="fa fa-area-chart"></i>
+				<span>&nbsp;Tổng lượng truy cập: {{ $visitor['total'] }}</span>
+			</div>
+		</div>
 		@yield('content')
 		@include('web.partials.guide')
 		@include('web.partials.footer')

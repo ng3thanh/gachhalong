@@ -1,6 +1,6 @@
 @extends('admin.layout') 
 
-@section('title', 'Chỉnh sửa sản phẩm')
+@section('title', 'Thêm mới sản phẩm')
 
 @section('css')
 <!-- Select2 -->
@@ -27,9 +27,8 @@
 		<div class="box-body">
 			<div class="row">
 				<div class="box-body">
-					<form role="form" id="create-new-product" class="form-horizontal" action="{{ URL::route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+					<form role="form" id="create-new-product" class="form-horizontal" action="{{ URL::route('product.store', $product->id) }}" method="POST" enctype="multipart/form-data">
 						{{ csrf_field() }}
-						{{ method_field('PATCH') }}
 						<!-- text input -->
 						<div>
 							<div class="col-xs-12">
@@ -83,26 +82,12 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Ảnh chính </label>
 									<div class="col-sm-9">
-										@foreach($images as $image)
-    										@if($image->is_main_image == 1)
-    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/products/'. $image->name) }}">
-    										@endif
-										@endforeach
-										<br>
-										<hr>
 										<input type="file" name="main-img">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"> Ảnh phụ </label>
 									<div class="col-sm-9">
-										@foreach($images as $image)
-    										@if($image->is_main_image == 0)
-    											<img alt="{{ $image->alt }}" width="100px" height="100px" src="{{ asset('upload/images/products/'. $image->name) }}">
-    										@endif
-										@endforeach
-										<br>
-										<hr>
 										<input type="file" name="more-img[]" multiple>
 									</div>
 								</div>
@@ -165,14 +150,18 @@
 						<!-- /.row -->
 					</form>
 
-					<div class="box-footer col-xs-12"
-						style="margin-top: 20px; padding-top: 20px">
-						<div class="col-xs-6 col-xs-offset-4">
+					<div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
+						<div class="col-xs-8 col-xs-offset-2">
 							<div class="col-xs-3">
-								<button class="btn btn-block btn-default" form="create-new-product" type="submit">Chỉnh sửa</button>
+								<button class="btn btn-block btn-default"
+										form="create-new-product" type="submit">Thêm mới</button>
 							</div>
 							<div class="col-xs-offset-1 col-xs-3">
-								<a href="{{ URL::route('product.index') }}" class="btn btn-block btn-default">Quay về</a>
+								<button class="btn btn-block btn-default">Làm lại</button>
+							</div>
+							<div class="col-xs-offset-1 col-xs-3">
+								<a href="{{ URL::route('product.index') }}"
+								   class="btn btn-block btn-default">Quay về</a>
 							</div>
 						</div>
 					</div>

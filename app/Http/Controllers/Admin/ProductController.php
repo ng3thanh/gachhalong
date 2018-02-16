@@ -100,6 +100,28 @@ class ProductController extends Controller
     }
 
     /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function copy($id)
+    {
+        $allMenu = Menu::all();
+        $menus = $allMenu->mapToGroups(function ($item, $key) {
+            return [
+                $item['parent_id'] => $item
+            ];
+        });
+        $product = Product::findOrFail($id);
+        $images = Image::where('product_id', $id)->get();
+
+        return view('admin.pages.product.copy', [
+            'product' => $product,
+            'menus'   => $menus,
+            'allMenu' => $allMenu,
+            'images'  => $images
+        ]);
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request            
