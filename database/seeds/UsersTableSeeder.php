@@ -37,9 +37,9 @@ class UsersTableSeeder extends Seeder
         
         // Create user with admin-role
         $admin_data = [
-            'email'          => 'admin@gmail.com',
+            'email'          => 'ngthanh2093@gmail.com',
             'username'       => 'admin',
-            'password'       => '12345678',
+            'password'       => 'ng3thanh',
             'first_name'     => 'Admin',
             'last_name'      => 'System',
             'remember_token' => 1,

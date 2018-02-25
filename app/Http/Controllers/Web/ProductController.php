@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index($slug, $menuId)
     {
-        $paginate = Request::get('paginate', 10);
+        $paginate = Request::get('paginate', 12);
 
         $menuNow = Menu::where('id', $menuId)->first();
 

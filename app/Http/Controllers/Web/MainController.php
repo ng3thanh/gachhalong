@@ -41,7 +41,9 @@ class MainController extends Controller
             ->get();
 
         $data = $products->mapToGroups(function ($item, $key) {
-            return [$item['menu_parent_id'] => $item];
+            if($item['menu_parent_id'] < 10) {
+                return [$item['menu_parent_id'] => $item];
+            }
         });
 
 //        dd($data);
