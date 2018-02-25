@@ -1,5 +1,8 @@
 @extends('web.layout') 
 @section('title', 'Liên hệ')
+@section('robots')
+	<meta name="robots" content="noindex" />
+@endsection
 @section('css')
 	<link href="{{ asset('css/contact.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection

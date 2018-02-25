@@ -1,5 +1,8 @@
 @extends('web.layout')
 @section('title', 'Gạch Hạ Long')
+@section('robots')
+    <meta name="robots" content="all" />
+@endsection
 @section('css')
     <link href="{{ asset('css/news.css') }}" rel="stylesheet" type="text/css" media="all"/>
 @endsection

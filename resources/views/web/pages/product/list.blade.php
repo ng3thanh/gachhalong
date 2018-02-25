@@ -1,5 +1,8 @@
 @extends('web.layout') 
-@section('title', 'Danh sách sản phẩm Gạch Hạ Long') 
+@section('title', 'Danh sách sản phẩm Gạch Hạ Long')
+@section('robots')
+	<meta name="robots" content="all" />
+@endsection
 @section('css')
 	<link href="{{ asset('css/list-product.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection

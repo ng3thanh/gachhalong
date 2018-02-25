@@ -1,5 +1,8 @@
 @extends('web.layout') 
 @section('title', $product->name)
+@section('robots')
+	<meta name="robots" content="all" />
+@endsection
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{{ asset('css/product.css') }}" type="text/css" media="screen" />

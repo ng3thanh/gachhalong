@@ -1,6 +1,8 @@
 @extends('web.layout') 
 @section('title', 'Gạch Hạ Long')
-
+@section('robots')
+	<meta name="robots" content="all" />
+@endsection
 @section('content')
 @include('web.partials.banner')
 <!-- product-nav -->

@@ -3,7 +3,11 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="{{ $meta }}" />
+        <meta name="keywords" content="Tân Định Phát, gạch Hạ Long, gạch, gạch ngói" />
+        <meta name="description" content="{{ $meta }}" />
+		<meta name="revised" content="ng3thanh, 25/02/2018" />
+		<meta name="author" content="ng3thanh" />
+		@yield('robots')
 		<title>@yield('title')</title>
 		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 		<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
