@@ -21,7 +21,8 @@ Route::middleware('guest')->namespace('Web')->group(function () {
     
     Route::prefix('san-pham')->group(function () {
         Route::get('/tim-kiem', 'ProductController@search')->name('search_product');
-        Route::get('/danh-sach/{slug}-{menu_id}', 'ProductController@index')->name('product');
+        Route::get('/danh-sach/', 'ProductController@index')->name('product');
+        Route::get('/danh-sach/{slug}-{menu_id}', 'ProductController@listProductIndex')->name('list_product');
         Route::get('{slug}-{id}', 'ProductController@show')->name('product_detail');
     });
 
