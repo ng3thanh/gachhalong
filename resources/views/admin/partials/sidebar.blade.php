@@ -10,7 +10,7 @@
 				<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p>Alexander Pierce</p>
+				<p>Admin System</p>
 				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
@@ -104,17 +104,17 @@
         		</a>
 				<ul class="treeview-menu">
 					<li>
-						<a href="pages/forms/general.html">
+						<a href="#">
 							<i class="fa fa-circle-o"></i>General Elements
 						</a>
 					</li>
 					<li>
-						<a href="pages/forms/general.html">
+						<a href="#">
 							<i class="fa fa-circle-o"></i>General Elements
 						</a>
 					</li>
 					<li>
-						<a href="pages/forms/general.html">
+						<a href="#">
 							<i class="fa fa-circle-o"></i>General Elements
 						</a>
 					</li>
@@ -122,7 +122,7 @@
 			</li>
 			
 			<li>
-				<a href="pages/calendar.html"> 
+				<a href="#">
 					<i class="fa fa-cubes"></i> 
 					<span> Thiết lập</span>
 					<span class="pull-right-container"> 

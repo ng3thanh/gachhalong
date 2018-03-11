@@ -45,6 +45,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('product', 'ProductController');
         Route::resource('news', 'NewsController');
         Route::resource('contact', 'ContactController');
+        Route::resource('user', 'UserController');
 
         Route::get('copy-product/{id}', 'ProductController@copy')->name('product.copy');
         Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');

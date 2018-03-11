@@ -27,6 +27,21 @@
         								<input type="text" name="name" class="form-control" placeholder="Tên sản phẩm ..." value="{{ Request::get('name') ? Request::get('name') : null }}">
         							</div>
         						</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label"> Loại sản phẩm</label>
+									<div class="col-sm-9">
+										<select class="form-control" name="menu" style="width: 100%;">
+											<option value="">Tất cả</option>
+											@foreach($type as $key => $value)
+												@if(Request::get('menu') == $key)
+													<option selected value="{{ $key }}"> {{ $value }}</option>
+												@else
+													<option value="{{ $key }}"> {{ $value }}</option>
+												@endif
+											@endforeach
+										</select>
+									</div>
+								</div>
         						<div class="form-group">
         							<label class="col-sm-3 control-label"> Trạng thái</label> 
         							<div class="col-sm-9">
@@ -201,7 +216,8 @@
                             	array("name" => Request::get('name'),
                                       "status" => Request::get('status'),
                                       "publish_time" => Request::get('publish_time'),
-                                      "price" => Request::get('price')
+                                      "price" => Request::get('price'),
+                                      "menu" => Request::get('menu')
                                  )
                             )->links() 
                         }}
@@ -228,7 +244,14 @@
         //Initialize Select2 Elements
         $('.select2').select2()
         //Date range picker with time picker
-        $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' })
+        $('#reservationtime').daterangepicker({
+			timePicker: true,
+			timePickerIncrement: 30,
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            },
+        })
   	});
   
 	var getUrlParameter = function getUrlParameter(sParam) {

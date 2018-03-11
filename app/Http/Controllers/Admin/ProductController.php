@@ -30,7 +30,9 @@ class ProductController extends Controller
         $startPrice = RequestParameter::get('start_price', null);
         $endPrice = RequestParameter::get('end_price', null);
         $status = RequestParameter::get('status', []);
-        
+        $menu = RequestParameter::get('menu', null);
+        $type = Menu::pluck('name','id');
+
         $query = Product::withTrashed();
 
         if (! empty($status)) {
@@ -72,13 +74,18 @@ class ProductController extends Controller
             $query->where('price', '<=', $endPrice);
         }
 
+        if (! empty($menu)) {
+            $query->where('menu_id', $menu);
+        }
+
         $products = $query->orderBy('publish_start', 'desc')->paginate($limit);
         
         $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
         
         return view('admin.pages.product.index', [
             'products' => $products,
-            'number' => $number
+            'number' => $number,
+            'type' => $type
         ]);
     }
 

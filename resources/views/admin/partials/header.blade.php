@@ -4,10 +4,10 @@
 	<a href="{{ URL::route('dashboard') }}" class="logo">
 	
 	    <!-- mini logo for sidebar mini 50x50 pixels -->
-		<span class="logo-mini"><b>THD</b></span> 
+		<span class="logo-mini"><b>TDP</b></span>
 		
 		<!-- logo for regular state and mobile devices -->
-		<span class="logo-lg"><b>Admin </b>THD</span>
+		<span class="logo-lg"><b>Admin </b>TDP</span>
 		
 	</a>
 	<!-- Header Navbar: style can be found in header.less -->
@@ -195,7 +195,7 @@
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 						<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="user-image"
-						alt="User Image"> <span class="hidden-xs">Alexander Pierce</span>
+						alt="User Image"> <span class="hidden-xs">Admin System</span>
 				</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
@@ -203,7 +203,7 @@
 							<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
 							<p>
-								Alexander Pierce - Web Developer <small>Member since Nov. 2012</small>
+								Admin System - <small>Admin since Nov. 2017</small>
 							</p></li>
 						<!-- Menu Body -->
 						<li class="user-body">
