@@ -45,8 +45,7 @@ class News extends Model
         'type',
         'image',
         'content',
-        'publish_start',
-        'publish_end',
+        'order',
         'tag'
     ];
 }

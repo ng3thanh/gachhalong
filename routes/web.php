@@ -48,6 +48,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('user', 'UserController');
 
         Route::get('copy-product/{id}', 'ProductController@copy')->name('product.copy');
+        Route::get('order-product', 'ProductController@order')->name('product.order');
+        Route::post('change-order-product', 'ProductController@changeOrder')->name('product.change.order');
         Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');
         Route::get('create-menu', 'ProductController@createMenu')->name('menu.create');
         Route::get('edit-menu/{id}', 'ProductController@editMenu')->name('menu.edit');

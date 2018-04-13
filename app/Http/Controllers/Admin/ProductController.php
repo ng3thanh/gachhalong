@@ -26,7 +26,6 @@ class ProductController extends Controller
     {
         $limit = Product::LIMIT;
         $name = RequestParameter::get('name', null);
-        $publishTime = RequestParameter::get('publish_time', null);
         $startPrice = RequestParameter::get('start_price', null);
         $endPrice = RequestParameter::get('end_price', null);
         $status = RequestParameter::get('status', []);
@@ -58,14 +57,7 @@ class ProductController extends Controller
         if (! empty($name)) {
             $query->where('name', 'like', "%$name%"); 
         }
-        
-        if (! empty($publishTime)) {
-            $startTime = date('Y-m-d 00:00:00', strtotime(substr($publishTime, 0, 10)));
-            $endTime = date('Y-m-d 23:59:59', strtotime(substr($publishTime, - 10)));
-            
-            $query->where('publish_start', '>=', $startTime)->where('publish_end', '<=', $endTime);
-        }
-        
+
         if (! empty($startPrice)) {
             $query->where('price', '>=', $startPrice);
         }
@@ -78,7 +70,7 @@ class ProductController extends Controller
             $query->where('menu_id', $menu);
         }
 
-        $products = $query->orderBy('publish_start', 'desc')->paginate($limit);
+        $products = $query->orderBy('created_at', 'desc')->paginate($limit);
         
         $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
         
@@ -148,8 +140,6 @@ class ProductController extends Controller
             $product->digital = $request->digital;
             $product->information = $request->information;
             $product->status = $request->status;
-            $product->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->publish_time, 0, 10)));
-            $product->publish_end = date('Y-m-d 23:59:59', strtotime(substr($request->publish_time, - 10)));
             $product->save();
             
             $mainImage = $request->file('main-img');
@@ -225,9 +215,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request            
-     * @param int $id            
-     * @return \Illuminate\Http\Response
+     * @param EditProductRequest $request
+     * @param $id
+     * @return mixed
      */
     public function update(EditProductRequest $request, $id)
     {
@@ -243,8 +233,6 @@ class ProductController extends Controller
             $product->digital = $request->digital;
             $product->information = $request->information;
             $product->status = $request->status;
-            $product->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->publish_time, 0, 10)));
-            $product->publish_end = date('Y-m-d 23:59:59', strtotime(substr($request->publish_time, - 10)));
             $product->save();
             
             $mainImage = $request->file('main-img');
@@ -390,5 +378,42 @@ class ProductController extends Controller
     public function destroyMenu($id)
     {
         
+    }
+
+    public function order()
+    {
+        $limit = Product::LIMIT;
+        $allProducts = Product::join('images', 'images.product_id', '=', 'products.id')
+        ->select(
+            'products.id',
+            'products.name',
+            'products.slug',
+            'products.menu_id',
+            'products.order',
+            'images.name as image_name',
+            'images.alt')
+        ->where('is_main_image', Image::IS_MAIN_IMAGE)
+        ->whereNull('images.deleted_at')
+        ->orderBy('menu_id')
+        ->orderBy('order')
+        ->get();
+        $products = $allProducts->mapToGroups(function ($item, $key) {
+            return [
+                $item['menu_id'] => $item
+            ];
+        });
+        $menu = Menu::pluck('name', 'id');
+        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
+        return view('admin.pages.product.order', ['products'=> $products, 'number' => $number, 'menu' => $menu]);
+    }
+
+    public function changeOrder(Request $request)
+    {
+        $id = $request->get('id');
+        $order = $request->get('data');
+
+        $product = Product::find($id);
+        $product->order = $order;
+        $product->save();
     }
 }

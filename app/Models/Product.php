@@ -45,8 +45,7 @@ class Product extends Model
         'information',
         'tag',
         'status',
-        'publish_start',
-        'publish_end'
+        'order'
     ];
 
     public function productMenu()

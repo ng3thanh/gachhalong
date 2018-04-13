@@ -88,6 +88,11 @@
 						</a>
 					</li>
 					<li>
+						<a href="{{ URL::route('product.order') }}">
+							<i class="fa fa-wifi"></i> Sắp xếp sản phẩm
+						</a>
+					</li>
+					<li>
 						<a href="{{ URL::route('product.create') }}">
 							<i class="fa fa-plus-circle"></i> Thêm mới sản phẩm
 						</a>

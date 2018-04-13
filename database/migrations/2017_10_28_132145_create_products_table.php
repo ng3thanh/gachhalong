@@ -25,8 +25,6 @@ class CreateProductsTable extends Migration
             $table->text('digital')->nullable();
             $table->text('information')->nullable();
             $table->json('tag')->nullable();
-            $table->dateTime('publish_start');
-            $table->dateTime('publish_end');
             $table->timestamps();
             $table->softDeletes();
         });

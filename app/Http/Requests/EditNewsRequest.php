@@ -28,8 +28,7 @@ class EditNewsRequest extends FormRequest
             'news_menu' => 'required',
             'news_description' => 'required',
             'news_content' => 'required',
-            'news_main_img' => 'mimes:jpeg,bmp,png,jpg',
-            'news_publish_time' => 'required'
+            'news_main_img' => 'mimes:jpeg,bmp,png,jpg'
         ];
     }
 }

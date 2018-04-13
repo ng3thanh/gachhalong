@@ -32,7 +32,6 @@ class ProductRequest extends FormRequest
             'digital'       => 'required',
             'main-img'      => 'required|mimes:jpeg,bmp,png,jpg',
 //            'more-img'      => 'mimes:jpeg,bmp,png,jpg',
-            'publish_time'  => 'required|string',
             'status'        => 'required'
         ];
     }

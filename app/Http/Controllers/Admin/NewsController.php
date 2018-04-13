@@ -26,7 +26,7 @@ class NewsController extends Controller
         $select = RequestParameter::get('news_menu', null);
         $publishTime = RequestParameter::get('news_publish_time', null);
         
-        $query = News::orderBy('publish_start', 'desc');
+        $query = News::orderBy('created_at', 'desc');
         
         if (! empty($title)) {
             $query->where('title', 'like', "%$title%");
@@ -35,14 +35,7 @@ class NewsController extends Controller
         if (! empty($select)) {
             $query->where('type', $select);
         }
-        
-        if (! empty($publishTime)) {
-            $startTime = date('Y-m-d 00:00:00', strtotime(substr($publishTime, 0, 10)));
-            $endTime = date('Y-m-d 23:59:59', strtotime(substr($publishTime, - 10)));
-            
-            $query->where('publish_start', '>=', $startTime)->where('publish_end', '<=', $endTime);
-        }
-        
+
         $news = $query->paginate($limit);
         
         $number = (RequestParameter::get('page', '1') - 1) * $limit + 1;
@@ -90,9 +83,6 @@ class NewsController extends Controller
             $news->image = $mainName;
             $news->description = $request->news_description;
             $news->content = $request->news_content;
-            $news->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
-            $news->publish_end = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
-            // $news->tag = 'avc'
             $news->save();
             
             DB::commit();
@@ -158,9 +148,6 @@ class NewsController extends Controller
             $news->image = $mainName;
             $news->description = $request->news_description;
             $news->content = $request->news_content;
-            $news->publish_start = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
-            $news->publish_end = date('Y-m-d 00:00:00', strtotime(substr($request->news_publish_time, 0, 10)));
-            // $news->tag = 'avc'
             $news->save();
             
             DB::commit();

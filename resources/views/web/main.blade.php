@@ -21,8 +21,7 @@
     							
 		</script>
 		<div class="sap_tabs">
-			<div id="horizontalTab"
-				style="display: block; width: 100%; margin: 0px;">
+			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 				<ul class="resp-tabs-list">
 					@foreach($parentMenu as $key => $value)
 					<li class="resp-tab-item" aria-controls="tab_item-{{ $key }}" role="tab">
@@ -32,7 +31,7 @@
 				</ul>
 				<div class="resp-tabs-container">
 					@foreach($data as $key => $products)
-					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-{{ $key }}">
+					<div class="tab-{{ $key }} resp-tab-content" aria-labelledby="tab_item-{{ $key }}">
 						@foreach($products as $product)
 						<div class="col-md-3 product-men yes-marg">
 							<div class="men-pro-item simpleCart_shelfItem">
@@ -45,7 +44,7 @@
 										</div>
 									</div>
 
-									@if(strtotime($product->publish_start) > strtotime('-1 month'))
+									@if(strtotime($product->created_at) > strtotime('-1 month'))
 										<span class="product-new-top">New</span>
 									@endif
 								</div>

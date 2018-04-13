@@ -107,8 +107,8 @@
 							<td>
 								<img src="{{ asset('upload/images/news/'.$new->image) }}" alt="{{ $new->title }}" width="50px" height="50px">
 							</td>
-							<td>{{ date('d/m/Y', strtotime($new->publish_start)) }}</td>
-							<td>{{ date('d/m/Y', strtotime($new->publish_end)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($new->created_at)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($new->updated_at)) }}</td>
 							
 							<td>
 								<a href="{{ URL::route('news.edit', $new->id) }}" class="btn btn-block btn-warning btn-xs">Sửa</a>

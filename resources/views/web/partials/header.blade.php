@@ -7,12 +7,16 @@
 				Giao hàng nhanh chóng
 			</li>
 			<li>
-				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-				Miễn phí giao hàng
+				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+				{{ config('constant.address') }}
+			</li>
+			<li>
+				<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+				<a href="callto:{{ config('constant.phone') }}">{{ config('constant.phone_format') }}</a>
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-				<a href="mailto:{{ env('APP_MAIL') }}">{{ env('APP_MAIL') }}</a>
+				<a href="mailto:{{ config('constant.email') }}">{{ config('constant.email') }}</a>
 			</li>
 		</ul>
 	</div>

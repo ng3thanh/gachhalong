@@ -41,8 +41,6 @@ class ProductController extends Controller
             })
             ->where('is_main_image', Image::IS_MAIN_IMAGE)
             ->whereNull('images.deleted_at')
-//        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
-//        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->paginate($paginate);
 
         $menuData = Menu::all();
@@ -86,8 +84,6 @@ class ProductController extends Controller
             })
             ->where('is_main_image', Image::IS_MAIN_IMAGE)
             ->whereNull('images.deleted_at')
-//        ->where('publish_start', '<=', date('Y-m-d H:i:s'))
-//        ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->paginate($paginate);
 
         $menuData = Menu::all();
@@ -149,8 +145,6 @@ class ProductController extends Controller
                 'products.digital',
                 'products.information',
                 'menus.name AS menu_name')
-//            ->where('publish_start', '<=', date('Y-m-d H:i:s'))
-//            ->where('publish_end', '>=', date('Y-m-d H:i:s'))
             ->findOrFail($id);
 
         $images = Image::where('product_id', $id)->get();

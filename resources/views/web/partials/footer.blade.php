@@ -13,8 +13,7 @@
 			</div>
 			<div class="col-sm-6 newsright">
 				<form>
-					<input type="text" value="Email" onfocus="this.value = '';"
-						onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
 					<input type="submit" value="Submit">
 				</form>
 			</div>
@@ -51,15 +50,15 @@
 					<ul>
 						<li>
 							<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
-							Chợ Cháy - Chẩn Kỳ - Trung Tú - Ứng Hoà - Hà Nội
+							{{ config('constant.address') }}
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-							<a href="mailto:tandinhphat2018@gmail.com">tandinhphat2018@gmail.com</a>
+							<a href="mailto:{{ config('constant.email') }}">{{ config('constant.email') }}</a>
 						</li>
 						<li>
 							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
-							092.812.0298
+							<a href="callto:{{ config('constant.phone') }}">{{ config('constant.phone_format') }}</a>
 						</li>
 					</ul>
 				</div>

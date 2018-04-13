@@ -92,17 +92,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label"> Thời gian đăng</label>
-									<div class="col-sm-9">
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-clock-o"></i>
-											</div>
-											<input type="text" class="form-control pull-right" id="reservationtime" name="publish_time">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
 									<label class="col-sm-3 control-label"> Trạng thái</label>
 									<div class="col-sm-9">
 										<div class="col-sm-3">

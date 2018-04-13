@@ -37,9 +37,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'star' => $faker->randomFloat(2, 0, 5),
         'vote' => $faker->numberBetween(1, 500),
         'digital' => $faker->text,
-        'information' => $faker->text,
-        'publish_start' => $start,
-        'publish_end' => $end,
+        'information' => $faker->text
     ];
 });
 

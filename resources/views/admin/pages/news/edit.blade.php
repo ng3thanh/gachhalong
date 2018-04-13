@@ -82,7 +82,7 @@
 												<i class="fa fa-clock-o"></i>
 											</div>
 											<input type="text" class="form-control pull-right" id="reservationtime" name="news_publish_time">
-											<input type="text" id="hidden-date" hidden="hidden" value="{{ date('m/d/Y', strtotime($new->publish_start)) }} - {{ date('m/d/Y', strtotime($new->publish_end)) }}">
+											<input type="text" id="hidden-date" hidden="hidden" value="{{ date('m/d/Y', strtotime($new->created_at) }} - {{ date('m/d/Y', strtotime($new->updated_at)) }}">
 										</div>
 									</div>
 								</div>

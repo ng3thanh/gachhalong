@@ -30,17 +30,17 @@
 									<div class="col-sm-12">
 										<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
 										<span id="label">Địa chỉ: </span>
-										<span id="content">Chợ Cháy - Chẩn Kỳ - Trung Tú - Ứng Hoà - Hà Nội</span>
+										<span id="content">{{ config('constant.address') }}</span>
 									</div>
 									<div class="col-sm-12">
 										<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
 										<span id="label">Điện thoại: </span>
-										<span id="content">092.812.0298</span>
+										<span id="content"><a href="mailto:{{ config('constant.email') }}">{{ config('constant.email') }}</a></span>
 									</div>
 									<div class="col-sm-12">
 										<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
 										<span id="label">Email: </span>
-										<span id="content"><a href="mailto:tandinhphat2018@gmail.com">tandinhphat2018@gmail.com</a></span>
+										<span id="content"><a href="callto:{{ config('constant.phone') }}">{{ config('constant.phone_format') }}</a></span>
 									</div>
 									<div class="clearfix"> </div>
 								</div>

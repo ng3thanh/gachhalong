@@ -20,8 +20,6 @@ class CreateNewsTable extends Migration
             $table->string('type');
             $table->string('image');
             $table->longText('content');
-            $table->dateTime('publish_start');
-            $table->dateTime('publish_end');
             $table->json('tag');
             $table->timestamps();
             $table->softDeletes();
