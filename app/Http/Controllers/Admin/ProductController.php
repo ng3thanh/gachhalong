@@ -70,7 +70,9 @@ class ProductController extends Controller
             $query->where('menu_id', $menu);
         }
 
-        $products = $query->orderBy('created_at', 'desc')->paginate($limit);
+        $products = $query->orderBy('menu_id', 'asc')
+            ->orderBy('order', 'asc')
+            ->paginate($limit);
         
         $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
         
@@ -236,6 +238,7 @@ class ProductController extends Controller
             $product->save();
             
             $mainImage = $request->file('main-img');
+
             if ($mainImage) {
                 Image::where('product_id', $id)->where('is_main_image', Image::IS_MAIN_IMAGE)->delete();
                 
@@ -250,7 +253,7 @@ class ProductController extends Controller
             }
             
             $moreImages = $request->file('more-img');
-            if ($mainImage) {
+            if ($moreImages) {
                 foreach ($moreImages as $key => $moreImage) {
                     Image::where('product_id', $id)->where('is_main_image', Image::IS_NOT_MAIN_IMAGE)->delete();
                     $moreName = time().$key.'_product_'.str_slug($request->name, '_').'.'.$mainImage->getClientOriginalExtension();

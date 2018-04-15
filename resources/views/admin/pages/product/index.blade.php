@@ -159,7 +159,7 @@
                                               style="width: 300px;">{!! $product->description !!}</span>
                                     </td>
                                     <td>
-                                        @if($product->status == 4)
+                                        @if($product->status == 4 || $product->deleted_at != null)
                                             <span class="label label-danger">Đã xóa</span>
                                         @elseif($product->status == 3)
                                             <span class="label label-warning">Hết hiển thị</span>
