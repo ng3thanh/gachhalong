@@ -12,8 +12,9 @@
 				<h3>ĐĂNG KÝ ĐỂ NHẬN BÁO GIÁ !</h3>
 			</div>
 			<div class="col-sm-6 newsright">
-				<form>
-					<input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+				<form action="{{ URL::route('mail.register') }}" method="post">
+					{!! csrf_field() !!}
+					<input type="text" placeholder="Email" name="email" required="required">
 					<input type="submit" value="Submit">
 				</form>
 			</div>

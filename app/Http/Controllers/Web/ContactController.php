@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FeedbackRequest;
+use App\Models\EmailContact;
 use App\Models\Feedback;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -44,6 +46,24 @@ class ContactController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
         }
+
+    }
+
+    public function mailRegister(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|max:100',
+        ]);
+
+        $email = $request->get('email');
+        $check = EmailContact::where('email', $email)->first();
+        if ($check) {
+            $check->register = $check->register + 1;
+            $check->save();
+        } else {
+            $newEmail = EmailContact::insertGetId(['email' => $email]);
+        }
+        return Redirect::back();
 
     }
 }

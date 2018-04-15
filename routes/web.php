@@ -18,7 +18,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         Route::get('/danh-sach', 'IntroduceController@index')->name('introduce');
         Route::get('{slug}-{id}', 'IntroduceController@show')->name('introduce_detail');
     });
-    
+
     Route::prefix('san-pham')->group(function () {
         Route::get('/tim-kiem', 'ProductController@search')->name('search_product');
         Route::get('/danh-sach/', 'ProductController@index')->name('product');
@@ -34,6 +34,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
     Route::prefix('lien-he')->group(function () {
         Route::get('/danh-sach', 'ContactController@index')->name('contact');
         Route::post('/gui-phan-hoi', 'ContactController@feedback')->name('feedback');
+        Route::post('/dang-ki-bao-gia', 'ContactController@mailRegister')->name('mail.register');
     });
 });
 
