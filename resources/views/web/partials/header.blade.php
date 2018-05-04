@@ -4,19 +4,23 @@
 		<ul>
 			<li>
 				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-				Giao hàng nhanh chóng
+				Giao hàng nhanh chóng<br>
+				Miễn phí trong bán kính 10 km
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+				{{ config('constant.main_address') }}<br>
 				{{ config('constant.address') }}
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+				<a href="callto:{{ config('constant.main_phone') }}">{{ config('constant.main_phone_format') }}</a><br>
 				<a href="callto:{{ config('constant.phone') }}">{{ config('constant.phone_format') }}</a>
 			</li>
 			<li>
-				<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><br>
 				<a href="mailto:{{ config('constant.email') }}">{{ config('constant.email') }}</a>
+				<span></span>
 			</li>
 		</ul>
 	</div>
